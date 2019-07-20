@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('aids', function (table) {
+  return knex.schema.createTable('assitance', function (table) {
     table.increments();
     table.string('category');
     table.string('description');
@@ -11,5 +11,7 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('aids');
+  return knex.schema.dropTable('assitance');
 };
+
+// request aid => set alert(notification) => after that certain amount of time, app will send a text =>
