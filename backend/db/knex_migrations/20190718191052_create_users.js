@@ -1,13 +1,5 @@
 
 exports.up = function(knex) {
-<<<<<<< HEAD
-  return knex.schema.createTable('users', function (table) {
-    table.increments();
-    table.string('email');
-    table.string('password');
-    table.bigInteger("phone_number")
-  });
-=======
   return knex.schema.createTable('users', t =>{
     t.increments('id').unsigned().primary();
     t.string('email')
@@ -17,7 +9,6 @@ exports.up = function(knex) {
     
   })
   
->>>>>>> client
 };
 
 exports.down = function(knex) {
