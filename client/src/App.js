@@ -16,7 +16,7 @@ constructor(props){
 }
 
  componentDidMount() {
-   fetch('/event').then(data => data.json()).then(result => this.setState({events: result }))
+   fetch('/event').then(data => console.log(data.json()))
  }
 
   render() {
