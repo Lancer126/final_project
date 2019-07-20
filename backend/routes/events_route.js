@@ -16,7 +16,7 @@ axios({
 })
   .then(function (response) {
     // handle success
-    res.json(response.data.events.length);
+    res.json(response.data);
   })
   .catch(function (error) {
     // handle error
