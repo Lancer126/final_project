@@ -1,4 +1,6 @@
 const axios = require('axios');
+var express = require('express');
+var router = express.Router();
 
 function buildURL(location_address,location_within,start_date_range_start,start_date_range_end){
   var url = "https://www.eventbriteapi.com/v3/events/search/?";
@@ -14,10 +16,13 @@ axios({
 })
   .then(function (response) {
     // handle success
-    console.log('response',response.data.events.length);
+    res.json(response.data.events.length);
   })
   .catch(function (error) {
     // handle error
     console.log('error', error);
   })
 
+
+
+  
