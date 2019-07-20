@@ -9,6 +9,7 @@ exports.up = function(knex) {
     table.string('emergency_contact_name')
     table.integer('emergency_contact_number')
   });
+
 };
 
 exports.down = function(knex) {

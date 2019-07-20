@@ -9,6 +9,16 @@ import Aid from './components/Aid';
 import Profile from './components/Profile';
 
 class App extends Component {
+
+constructor(props){
+  super(props);
+  this.state= {}
+}
+
+ componentDidMount() {
+   fetch('/event').then(data => data.json()).then(result => this.setState({events: result }))
+ }
+
   render() {
     return (
     <Router>
