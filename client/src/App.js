@@ -12,18 +12,25 @@ class App extends Component {
 
 constructor(props){
   super(props);
-  this.state= {}
+  this.state = {
+    events: [
+      //{name: 'catalina wine mixer'},
+      //{name: 'osheaga'}
+    ]
+  }
 }
 
  componentDidMount() {
-   fetch('/event').then(data => console.log(data.json()))
+   fetch('/event').then(data => data.json()).then(response => this.setState({events: response}));
+
+   console.log(this.state);
  }
 
   render() {
     return (
     <Router>
         <div>
-        <h1>Eventure</h1> 
+        <h1>Eventure</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <ul className="navbar-nav mr-auto">
           <li><Link to={'/'} className="nav-link"> Login </Link></li>
@@ -39,8 +46,8 @@ constructor(props){
           <Switch>
               <Route exact path='/' component={Login} />
               <Route path='/map' component={Map} />
-              <Route path='/discover' component={Discover}/>
-              <Route path='/search' component={Search}/>
+              <Route path='/discover' render={() => <Discover events={this.state.events} /> } />
+              <Route path='/search'  component={Search}/>
               <Route path='/tickets' component={Tickets}/>
               <Route path='/aid' component={Aid}/>
               <Route path='/profile' component={Profile}/>
