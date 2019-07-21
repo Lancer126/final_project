@@ -32,15 +32,15 @@ constructor(props){
         <div>
         <h1>Eventure</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
-          <li><Link to={'/'} className="nav-link"> Login </Link></li>
-          <li><Link to={'/map'} className="nav-link"> Map </Link></li>
-          <li><Link to={'/discover'} className="nav-link"> Discover </Link></li>
-          <li><Link to={'/search'} className="nav-link"> Search </Link></li>
-          <li><Link to={'/tickets'} className="nav-link"> Tickets </Link></li>
-          <li><Link to={'/aid'} className="nav-link"> Aid </Link></li>
-          <li><Link to={'/profile'} className="nav-link"> Profile </Link></li>
-          </ul>
+     
+          <button><Link to={'/'} className="nav-link"> Login </Link></button>
+          <button><Link to={'/map'} className="nav-link"> Map </Link></button>
+          <button><Link to={'/discover'} className="nav-link"> Discover </Link></button>
+          <button><Link to={'/search'} className="nav-link"> Search </Link></button>
+          <button><Link to={'/tickets'} className="nav-link"> Tickets </Link></button>
+          <button><Link to={'/aid'} className="nav-link"> Aid </Link></button>
+          <button><Link to={'/profile'} className="nav-link"> Profile </Link></button>
+        
           </nav>
           <hr />
           <Switch>
