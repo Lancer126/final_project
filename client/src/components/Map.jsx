@@ -21,12 +21,8 @@ export class MapContainer extends Component {
 export default GoogleApiWrapper({
   apiKey: ("AIzaSyBmOjKnCb27NSuwCaY98GW-m0A9Rk9x9eE")
 })(MapContainer)
-<<<<<<< HEAD
- 
-=======
 
 
 /*var watchID = navigator.geolocation.watchPosition(function(position) {
   console.log(position.coords.latitude, position.coords.longitude);
 });*/ 
->>>>>>> location
