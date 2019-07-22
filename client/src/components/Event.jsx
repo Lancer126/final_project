@@ -7,13 +7,17 @@ class Event extends Component {
   }
   render() {
     return (
-        <form>
-          <span>{this.props.event.name.text}</span>
+        <div className="eventbox">
+          <div>
+          <h3>{this.props.event.name.text}</h3>
+          </div>
+          {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}
+
           <span>{this.props.event.start.local}</span>
           <p>{this.props.event.summary}</p>
 
 
-        </form>
+        </div>
     );
   }
 }
