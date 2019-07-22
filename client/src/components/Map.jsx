@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import GoogleMapReact from 'google-map-react';
+import {Marker} from 'google-maps-react';
  
-export class MapContainer extends Component {
-  render() {
-    return (
-      <Map google={this.props.google} zoom={14}>
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
+class SimpleMap extends Component {
+ static defaultProps = {
  
-        <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
-        <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              {/* <h1>{this.state.selectedPlace.name}</h1> */}
-            </div>
-        </InfoWindow>
-      </Map>
-    );
-  }
+   center: {
+     lat: 45.5274423,
+     lng: -73.59654979999999
+   },
+   zoom: 11
+ };
+ render() {
+   return (
+     // Important! Always set the container height explicitly
+     <div style={{ height: '100vh', width: '100%' }}>
+       <GoogleMapReact
+         bootstrapURLKeys={{ key: 'AIzaSyBmOjKnCb27NSuwCaY98GW-m0A9Rk9x9eE'}}
+         defaultCenter={this.props.center}
+         defaultZoom={this.props.zoom}
+       >
+         <AnyReactComponent
+           lat={45.5274423}
+           lng={-73.59654979999999}
+           text="My Marker"
+         />
+       </GoogleMapReact>
+     </div>
+   );
+ }
 }
- 
-export default GoogleApiWrapper({
-  apiKey: ("AIzaSyBmOjKnCb27NSuwCaY98GW-m0A9Rk9x9eE")
-})(MapContainer)
+export default SimpleMap;
 
 
-/*var watchID = navigator.geolocation.watchPosition(function(position) {
-  console.log(position.coords.latitude, position.coords.longitude);
-});*/ 

@@ -7,6 +7,7 @@ import Search from './components/Search';
 import Tickets from './components/Tickets';
 import Aid from './components/Aid';
 import Profile from './components/Profile';
+import './App.css';
 
 class App extends Component {
 
