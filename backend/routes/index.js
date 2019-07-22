@@ -6,7 +6,7 @@ const axios = require('axios');
 router.get('/event', function(req, res, next) {
 
   function buildURL(location_address,location_within,start_date_range_start,start_date_range_end){
-    var url = "https://www.eventbriteapi.com/v3/events/search/?";
+    var url = "https://www.eventbriteapi.com/v3/events/search/?expand=venue&";
     url = url + location_address + location_within + start_date_range_start +start_date_range_end;
     return url;
   }
