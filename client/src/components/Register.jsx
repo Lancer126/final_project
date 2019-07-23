@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: ''};
+    this.state = {
+        email: '',
+        name: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +37,16 @@ class Login extends Component {
     });
   }
 
+  componentDidMount() {
+    window.FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+          window.FB.api('/me', function (response) {
+            this.setState({name: response.name});
+          })
+        }
+      });
+  }
+
   render() {
     return (
       <div>
@@ -47,24 +60,23 @@ class Login extends Component {
           Password
           <input type="text" name="password" placeholder="plz not 1234"/>
         </label>
+        <label>
+          Phone
+          <input type="text" name="phone" placeholder="4387778885"/>
+        </label>
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Tits McGee" defaultValue={this.state.name}/>
+        </label>
         <input type="submit" value="Submit" />
       </form>
 
         <br/>
-
-        <div className="fb-login-button"
-          data-width=""
-          data-size="large"
-          data-button-type="continue_with"
-          data-auto-logout-link="true"
-          data-use-continue-as="true"
-        ></div>
-        <br/>
-        Not already a user? Register <a href="/register">here</a>
+        Already a user? <a href="/login">Login</a>
 
       </div>
     );
   }
 }
 
-export default Login;
+export default Register;
