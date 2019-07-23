@@ -46,7 +46,7 @@ constructor(props){
           <hr />
           <Switch>
               <Route exact path='/' component={Login} />
-              <Route path='/map' component={Map} />
+              <Route path='/map' render={() => <Map events={this.state.events} /> } />
               <Route path='/discover' render={() => <Discover events={this.state.events} /> } />
               <Route path='/search'  component={Search}/>
               <Route path='/tickets' component={Tickets}/>

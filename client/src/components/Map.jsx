@@ -27,22 +27,34 @@ class GoogleMapsContainer extends React.Component {
       'marginLeft': 'auto',
       'marginRight': 'auto'
     }
+
+    const allEvents = this.props.events.map((event) => {
+      return <Marker
+        onClick={this.onMarkerClick}
+        key={event.id}
+        title={event.name.text}
+        position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
+        name={event.name.text}
+      />
+    });
+
     return (
       <Map
         item
-        xs = { 12 }
-        style = { style }
-        google = { this.props.google }
-        onClick = { this.onMapClick }
-        zoom = { 14 }
-        initialCenter = {{ lat: 45.5274423, lng: -73.59654979999999 }}
+        xs={12}
+        style={style}
+        google={this.props.google}
+        onClick={this.onMapClick}
+        zoom={14}
+        initialCenter={{ lat: 45.5274423, lng: -73.59654979999999 }}
       >
         <Marker
-          onClick = { this.onMarkerClick }
-          title = { 'Current Location' }
-          position = {{ lat: 45.5274423, lng: -73.59654979999999 }}
-          name = { 'Current Location' }
+          onClick={this.onMarkerClick}
+          title={'Current Location'}
+          position={{ lat: 45.5274423, lng: -73.59654979999999 }}
+          name={'Current Location'}
         />
+        {allEvents}
       </Map>
     );
   }
