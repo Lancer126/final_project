@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
+const accountSid = 'AC672ba91472c59d7d1f241135eb4b4a67';
+const authToken = '63d0ed7cce81e5e6936b369f0635aa40';
+const client = require('twilio')(accountSid, authToken);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const http = require('http');
 
 /* GET home page. */
 router.get('/event', function(req, res, next) {
@@ -28,5 +33,20 @@ router.get('/event', function(req, res, next) {
       console.log('error', error);
     })
 });
+
+router.post('/sms', (req, res) => {
+  const twiml = new MessagingResponse();
+  const message = res.message()
+
+  console.log("backend test", message)
+
+  twiml.message('The Robots are coming! Head for the hills!');
+
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.end(twiml.toString());
+});
+
+
+
 
 module.exports = router;
