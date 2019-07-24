@@ -13,7 +13,7 @@ class Login extends Component {
 
 <h3>Emergency Contacts</h3>
 
-<h4>Checkin</h4>
+<h4>Check-in</h4>
 
 
 
