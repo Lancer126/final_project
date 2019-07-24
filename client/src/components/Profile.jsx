@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class Login extends Component {
   render() {
@@ -19,9 +20,9 @@ class Login extends Component {
 
 <h3>Phone Number</h3>
 
-<h3><a href="/login">Login</a></h3>
-
-<h3><a href="/register">Register</a></h3>
+<Link to={'/login'} className="nav-link">Login</Link>
+<br/>
+<Link to={'/register'} className="nav-link">Register</Link>
 
         </div>
     );

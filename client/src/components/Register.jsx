@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const axios = require('axios');
 
 class Register extends Component {
@@ -35,17 +36,11 @@ class Register extends Component {
   }
 
   handleSubmit(event) {
-    window.FB.getLoginStatus(function (response) {
-      if (response.status === 'connected') {
-        window.FB.api('/me', function (response) {
-          alert('Your name is: ' + response.name);
-        })
-      }
-    });
     event.preventDefault();
 
+    if(this.state.name && this.state.email && this.state.password && this.state.phone) {
       axios.post('/adduser', {
-        message: this.state
+        user: this.state
       })
       .then(function (response) {
         console.log(response);
@@ -53,6 +48,10 @@ class Register extends Component {
       .catch(function (error) {
         console.log(error);
       });
+    }
+    else {
+      alert("You can't have empty fields");
+    }
   }
 
   handleOnClick() {
@@ -104,7 +103,7 @@ class Register extends Component {
       </form>
 
         <br/>
-        Already a user? <a href="/login">Login</a>
+        Already a user? <Link to={'/login'} className="nav-link">Login</Link>
 
       </div>
     );

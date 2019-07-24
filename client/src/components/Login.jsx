@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -42,6 +43,10 @@ class Login extends Component {
     });
   }
 
+  componentDidMount() {
+    window.FB.XFBML.parse();
+  }
+
   render() {
     return (
       <div>
@@ -68,7 +73,7 @@ class Login extends Component {
           data-use-continue-as="true"
         ></div>
         <br/>
-        Not already a user? Register <a href="/register">here</a>
+        Not already a user? Register <Link to={'/register'} className="nav-link">here</Link>
 
       </div>
     );
