@@ -35,16 +35,19 @@ router.get('/event', function(req, res, next) {
 });
 
 router.post('/sms', (req, res) => {
-  const twiml = new MessagingResponse();
-  const message = res.message()
+  
+  let test = JSON.stringify(res)
+  console.log(test.body)
 
-  console.log("backend test", message)
+  const twiml = new MessagingResponse();
+
 
   twiml.message('The Robots are coming! Head for the hills!');
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
 });
+
 
 
 
