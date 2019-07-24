@@ -37,7 +37,6 @@ class App extends Component {
           <h1>Eventure</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <button><Link to={'/'} className="nav-link"> Login </Link></button>
             <button><Link to={'/map'} className="nav-link"> Map </Link></button>
             <button><Link to={'/discover'} className="nav-link"> Discover </Link></button>
             <button><Link to={'/search'} className="nav-link"> Search </Link></button>
@@ -48,13 +47,14 @@ class App extends Component {
           </nav>
           <hr />
           <Switch>
-            <Route exact path='/' component={Login} />
+            <Route exact path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
             <Route path='/discover' render={() => <Discover events={this.state.events} />} />
             <Route path='/search' component={Search} />
             <Route path='/tickets' component={Tickets} />
             <Route path='/aid' component={Aid} />
             <Route path='/profile' component={Profile} />
+            <Route path='/register' component={Register} />
 
 
           </Switch>

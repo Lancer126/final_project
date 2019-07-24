@@ -3,14 +3,22 @@ import React, { Component } from 'react';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: ''};
+    this.state = {
+      email: '',
+      password: ''
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleEmail(event) {
+    this.setState({email: event.target.value});
+  }
+
+  handlePassword(event) {
+    this.setState({password: event.target.value});
   }
 
   handleSubmit(event) {
@@ -41,11 +49,11 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
         <label>
           Email
-          <input type="text" name="email" value={this.state.value} onChange={this.handleChange} placeholder="email@email.com"/>
+          <input type="text" name="email" value={this.state.email} onChange={this.handleEmail} placeholder="email@email.com"/>
         </label>
         <label>
           Password
-          <input type="text" name="password" placeholder="plz not 1234"/>
+          <input type="text" name="password" value={this.state.password} onChange={this.handlePassword} placeholder="plz not 1234"/>
         </label>
         <input type="submit" value="Submit" />
       </form>

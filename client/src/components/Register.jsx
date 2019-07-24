@@ -5,15 +5,32 @@ class Register extends Component {
     super(props);
     this.state = {
         email: '',
-        name: ''
+        name: '',
+        password: '',
+        phone: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handlePhone = this.handlePhone.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleEmail(event) {
+    this.setState({email: event.target.value});
+  }
+
+  handleName(event) {
+    this.setState({name: event.target.value});
+  }
+
+  handlePassword(event) {
+    this.setState({password: event.target.value});
+  }
+
+  handlePhone(event) {
+    this.setState({phone: event.target.value});
   }
 
   handleSubmit(event) {
@@ -54,19 +71,19 @@ class Register extends Component {
         <form onSubmit={this.handleSubmit}>
         <label>
           Email
-          <input type="text" name="email" value={this.state.value} onChange={this.handleChange} placeholder="email@email.com"/>
+          <input type="text" name="email" value={this.state.email} onChange={this.handleEmail} placeholder="email@email.com"/>
         </label>
         <label>
           Password
-          <input type="text" name="password" placeholder="plz not 1234"/>
+          <input type="text" value={this.state.password} onChange={this.handlePassword} name="password" placeholder="plz not 1234"/>
         </label>
         <label>
           Phone
-          <input type="text" name="phone" placeholder="4387778885"/>
+          <input type="text" name="phone" value={this.state.phone} onChange={this.handlePhone} placeholder="4387778885"/>
         </label>
         <label>
           Name
-          <input type="text" name="name" placeholder="Tits McGee" defaultValue={this.state.name}/>
+          <input type="text" name="name" value={this.state.name} onChange={this.handleName} placeholder="Tits McGee" defaultValue={this.state.name}/>
         </label>
         <input type="submit" value="Submit" />
       </form>
