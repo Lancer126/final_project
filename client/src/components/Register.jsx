@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 class Register extends Component {
   constructor(props) {
@@ -42,6 +43,16 @@ class Register extends Component {
       }
     });
     event.preventDefault();
+
+      axios.post('/adduser', {
+        message: this.state
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleOnClick() {
@@ -55,10 +66,14 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    window.FB.getLoginStatus(function (response) {
+    window.FB.getLoginStatus(response => {
         if (response.status === 'connected') {
-          window.FB.api('/me', function (response) {
-            this.setState({name: response.name});
+          window.FB.api('/me', response => {
+            this.setState({
+              name: response.name,
+              email: response.email,
+              phone: response.phone
+            });
           })
         }
       });
@@ -83,7 +98,7 @@ class Register extends Component {
         </label>
         <label>
           Name
-          <input type="text" name="name" value={this.state.name} onChange={this.handleName} placeholder="Tits McGee" defaultValue={this.state.name}/>
+          <input type="text" name="name" value={this.state.name} onChange={this.handleName} placeholder="Tits McGee"/>
         </label>
         <input type="submit" value="Submit" />
       </form>
