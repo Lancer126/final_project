@@ -13,6 +13,10 @@ class Login extends Component {
 
 <h3>Emergency Contacts</h3>
 
+<h4>Checkin</h4>
+
+
+
 <h3>Phone Number</h3>
 
 <h3><a href="/login">Login</a></h3>
