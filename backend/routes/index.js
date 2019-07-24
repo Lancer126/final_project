@@ -7,6 +7,9 @@ const client = require('twilio')(accountSid, authToken);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const http = require('http');
 
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({extended: false}));
+
 /* GET home page. */
 router.get('/event', function(req, res, next) {
 
@@ -34,19 +37,36 @@ router.get('/event', function(req, res, next) {
     })
 });
 
+
+//receiving a text message
 router.post('/sms', (req, res) => {
+  let eventMessage = req.body.Body
   const twiml = new MessagingResponse();
-  const message = res.message()
-
-  console.log("backend test", message)
-
-  twiml.message('The Robots are coming! Head for the hills!');
-
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
+
+  axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 });
 
+router.post('/posttomessage', (req, res) => {
+client.messages
+  .create({
+     body: req.body.message,
+     from: '+15146124974',
+     to: '+15149796909'
+   })
+  .then(message => console.log(message.sid));
 
+  })
 
 
 module.exports = router;
