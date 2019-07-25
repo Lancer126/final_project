@@ -6,25 +6,36 @@ class EventDetails extends Component {
   }
 
   render() {
-    const url = window.location.href.substring(28)
-    const events = this.props.events
-    console.log(this.props);
-    //console.log(events);
-    const display = events.find(function(element) {
-      return element.id = url;
-    });
 
-    console.log(display);
+    if(this.props.events.length !== 0 ){
+      var url = window.location.href.substring(28)
+      console.log(url);
+      var events = this.props.events
+      console.log(this.props);
+      //console.log(events);
 
-    return (
-      <div>
-        <h3> display.name.text </h3>
-        <button>Request Ass</button>
-        <button>Set Reminder</button>
+      function findEvent(id){
+        for(var i = 0; i < events.length; i++){
+          if (events[i].id === id){
+            return events[i];
+          }
+        }
+      }
+      var display = findEvent(url)
+      console.log(display);
 
-      </div>
+      return (
+        <div>
+          <h3>{display.name.text}</h3>
+          <p>{display.description.text}</p>
+          <button>Request Assistances</button>
+          <button>Set Reminder</button>
 
-    );
+        </div>
+
+      );
+    }
+    return null;
   }
 }
 

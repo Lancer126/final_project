@@ -17,10 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        //{name: 'catalina wine mixer'},
-        //{name: 'osheaga'}
-      ]
+      events: []
     }
   }
 
