@@ -6,8 +6,23 @@ class EventDetails extends Component {
   }
 
   render() {
+    const url = window.location.href.substring(28)
+    const events = this.props.events
+    console.log(this.props);
+    //console.log(events);
+    const display = events.find(function(element) {
+      return element.id = url;
+    });
+
+    console.log(display);
+
     return (
-      <div> TESTINGGGGGG </div>
+      <div>
+        <h3> display.name.text </h3>
+        <button>Request Ass</button>
+        <button>Set Reminder</button>
+
+      </div>
 
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EventDetails from './EventDetails';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class Event extends Component {
 
@@ -8,10 +7,11 @@ class Event extends Component {
     super(props);
   }
   render() {
+    const link = '/event/'+this.props.event.id;
     return (
         <div className="eventbox">
           <div>
-          <a href="/event/:id">{this.props.event.name.text}</a>
+          <a href={link}>{this.props.event.name.text}</a>
           </div>
           {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}
 
