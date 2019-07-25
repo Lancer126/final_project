@@ -8,24 +8,22 @@ import Tickets from './components/Tickets';
 import Aid from './components/Aid';
 import Profile from './components/Profile';
 import Register from './components/Register';
+import EventDetails from './components/EventDetails';
 import './App.css';
+
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        //{name: 'catalina wine mixer'},
-        //{name: 'osheaga'}
-      ]
+      events: []
     }
   }
 
   componentDidMount() {
     fetch('/event').then(data => data.json()).then(response => this.setState({ events: response }));
 
-   console.log(this.state);
   }
 
 
@@ -55,6 +53,9 @@ class App extends Component {
             <Route path='/aid' component={Aid} />
             <Route path='/profile' component={Profile} />
             <Route path='/register' component={Register} />
+            <Route path='/event/:id' render={() => <EventDetails events={this.state.events} />} />
+
+
 
 
           </Switch>

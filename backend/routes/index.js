@@ -66,7 +66,7 @@ router.get('/event', function(req, res, next) {
     .then(function (response) {
       // handle success
       let data =  response.data.events
-      //console.log(data);
+      console.log(data);
       res.json(data);
     })
     .catch(function (error) {
