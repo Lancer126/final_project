@@ -9,6 +9,8 @@ import Aid from './components/Aid';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import EventDetails from './components/EventDetails';
+import Categories from './components/Categories';
+import EmergencyContacts from './components/EmergencyContacts';
 import './App.css';
 
 
@@ -56,6 +58,8 @@ class App extends Component {
             <Route path='/event/:id' render={() => <EventDetails events={this.state.events} />} />
 
 
+            <Route path='/categories' component={Categories} />
+            <Route path='/contacts' component={EmergencyContacts} />
 
 
           </Switch>

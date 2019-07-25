@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const axios = require('axios');
 
-class Register extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        email: '',
-        name: '',
-        password: '',
-        phone: ''
+        categories: []
     };
 
     this.handleEmail = this.handleEmail.bind(this);
@@ -37,16 +34,13 @@ class Register extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const self = this;
 
-    if(this.state.name && this.state.email && this.state.password && this.state.phone) {
+    if(this.state.interests.length > 0) {
       axios.post('/adduser', {
-        user: this.state
+        categories: this.state.categories
       })
       .then(function (response) {
-        window.sessionStorage.setItem('user_email', self.state.email)
         console.log(response);
-        self.props.history.push('/contacts')
       })
       .catch(function (error) {
         console.log(error);
@@ -55,6 +49,16 @@ class Register extends Component {
     else {
       alert("You can't have empty fields");
     }
+  }
+
+  handleOnClick() {
+    window.FB.getLoginStatus(function (response) {
+      if (response.status === 'connected') {
+        window.FB.api('/me', function (response) {
+          console.log(response)
+        })
+      }
+    });
   }
 
   componentDidMount() {
@@ -103,4 +107,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Categories;

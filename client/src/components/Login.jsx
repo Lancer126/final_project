@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { kStringMaxLength } from 'buffer';
+const axios = require('axios');
 
 class Login extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class Login extends Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.emailIsInDatabase = this.emailIsInDatabase.bind(this);
   }
 
   handleEmail(event) {
@@ -22,15 +25,28 @@ class Login extends Component {
     this.setState({password: event.target.value});
   }
 
-  handleSubmit(event) {
-    window.FB.getLoginStatus(function (response) {
-      if (response.status === 'connected') {
-        window.FB.api('/me', function (response) {
-          alert('Your name is: ' + response.name);
-        })
-      }
+  emailIsInDatabase(email) {
+    let state = false;
+    axios.get(`/getEmail?email=${email}`)
+    .then(function (response) {
+      alert(response);
+    })
+    .catch(function (error) {
+      console.log(error);
     });
+  }
+
+  handleSubmit(event) {
     event.preventDefault();
+
+    if(this.state.password && this.state.email) {
+      if( this.emailIsInDatabase(this.state.email)) {
+        this.props.history.push('/map')
+      }
+    }
+    else {
+      alert("You can't have empty fields");
+    }
   }
 
   handleOnClick() {

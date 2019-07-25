@@ -18,8 +18,6 @@ class Login extends Component {
 
 
 
-
-
 <h3>Phone Number</h3>
 
 <Link to={'/login'} className="nav-link">Login</Link>
