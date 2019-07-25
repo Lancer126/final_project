@@ -4,7 +4,7 @@ exports.up = function(knex) {
     table.increments();
     table.string('name');
     table.string('photo');
-    table.string('description');
+    table.text('description');
     table.timestamp('start_time');
     table.timestamp('end_time');
     table.string('organizer');

@@ -1,14 +1,49 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
-const accountSid = 'AC672ba91472c59d7d1f241135eb4b4a67';
-const authToken = '63d0ed7cce81e5e6936b369f0635aa40';
+const accountSid = process.env.TWILLIOACCOUNTSID;
+const authToken = process.env.TWILLIOAUTHTOKEN;
 const client = require('twilio')(accountSid, authToken);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const http = require('http');
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({extended: false}));
+
+function AddMinutesToDate(date, minutes) {
+  console.log("newdate trigger")
+  return new Date(date.getTime() + minutes*60000);
+}
+function DateFormat(date){
+const days = date.getDate();
+const year = date.getFullYear();
+const month = (date.getMonth()+1);
+const hours = date.getHours();
+const minutes = date.getMinutes();
+minutes = minutes < 10 ? '0' + minutes : minutes;
+const strTime = days + '/' + month + '/' + year + '/ '+hours + ':' + minutes;
+return strTime;
+}
+const now = new Date();
+const next = AddMinutesToDate(now,15);
+
+while (true) {
+  setTimeout(() => {
+      knex(events)
+          .whereBetween('start_time', [new Date(), DateFormat(next)])
+          .then((filteredEvents) => {
+              filteredEvents.forEach(event => {
+                client.messages
+                .create({
+                   body: "Hey this is eventure, just checking if everything is going well at the event. Reply no if you need us to contact your emergency contacts.",
+                   from: '+15146124974',
+                   to: '+15149796909'
+                 })
+                .then(message => console.log(message.sid));
+              })
+          })
+  }, 900000);
+};
 
 /* GET home page. */
 router.get('/event', function(req, res, next) {
@@ -67,6 +102,8 @@ client.messages
   .then(message => console.log(message.sid));
 
   })
+  
+  
 
 
 module.exports = router;
