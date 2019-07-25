@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
 import Login from './components/Login';
 import Map from './components/Map';
 import Discover from './components/Discover';
@@ -15,6 +16,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       events: [
         //{name: 'catalina wine mixer'},
         //{name: 'osheaga'}
@@ -34,19 +36,20 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <h1>Eventure</h1>
+          <h1 id = 'eventure'>Eventure</h1>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-
-            <button><Link to={'/map'} className="nav-link"> Map </Link></button>
-            <button><Link to={'/discover'} className="nav-link"> Discover </Link></button>
-            <button><Link to={'/search'} className="nav-link"> Search </Link></button>
-            <button><Link to={'/tickets'} className="nav-link"> Tickets </Link></button>
-            <button><Link to={'/aid'} className="nav-link"> Aid </Link></button>
-            <button><Link to={'/profile'} className="nav-link"> Profile </Link></button>
-
+            <div id = 'homebtns'>
+            <button id = 'hmebtn'><Link to={'/map'} className="nav-link"> Map </Link></button>
+            <button id = 'hmebtn'><Link to={'/discover'} className="nav-link"> Discover </Link></button>
+            <button id = 'hmebtn'><Link to={'/search'} className="nav-link"> Search </Link></button>
+            <button id = 'hmebtn'><Link to={'/tickets'} className="nav-link"> Tickets </Link></button>
+            <button id = 'hmebtn'><Link to={'/aid'} className="nav-link"> Aid </Link></button>
+            <button id = 'hmebtn'><Link to={'/profile'} className="nav-link"> Profile </Link></button>
+          </div>
           </nav>
           <hr />
           <Switch>
+           
             <Route exact path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
             <Route path='/discover' render={() => <Discover events={this.state.events} />} />
@@ -55,8 +58,7 @@ class App extends Component {
             <Route path='/aid' component={Aid} />
             <Route path='/profile' component={Profile} />
             <Route path='/register' component={Register} />
-
-
+          
           </Switch>
         </div>
       </Router>
