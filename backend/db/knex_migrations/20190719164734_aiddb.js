@@ -7,6 +7,7 @@ exports.up = function(knex) {
     table.integer('event_id');
     table.integer('user_id');
     table.string('status');
+    
   });
 };
 
