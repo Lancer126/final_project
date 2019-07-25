@@ -9,10 +9,9 @@ class Event extends Component {
   }
   render() {
     return (
-      <Router>
         <div className="eventbox">
           <div>
-          <a href="/eventdetails">{this.props.event.name.text}</a>
+          <a href="/event/:id">{this.props.event.name.text}</a>
           </div>
           {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}
 
@@ -21,14 +20,8 @@ class Event extends Component {
 
           <button>Attend</button>
 
-
-
-      <Switch>
-            <Route path='/eventdetails' render={() => <EventDetails event={this.props.event} />} />
-
-      </Switch>
         </div>
-      </Router>
+
 
     );
   }
