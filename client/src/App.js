@@ -42,7 +42,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
             <Route path='/discover' render={() => <Discover events={this.state.events} />} />
-            <Route path='/search' component={Search} />
+            <Route path='/search' render={() => <Search events={this.state.events} />} />
             <Route path='/tickets' component={Tickets} />
             <Route path='/aid' component={Aid} />
             <Route path='/profile' component={Profile} />
