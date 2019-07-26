@@ -12,6 +12,7 @@ import EventDetails from './components/EventDetails';
 import Categories from './components/Categories';
 import EmergencyContacts from './components/EmergencyContacts';
 import './App.css';
+import Navbarr from './components/Navbarr';
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
   componentDidMount() {
     fetch('/event').then(data => data.json()).then(response => this.setState({ events: response }));
 
+    console.log(this.state);
   }
 
 
@@ -34,19 +36,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <h1>Eventure</h1>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-
-            <button><Link to={'/map'} className="nav-link"> Map </Link></button>
-            <button><Link to={'/discover'} className="nav-link"> Discover </Link></button>
-            <button><Link to={'/search'} className="nav-link"> Search </Link></button>
-            <button><Link to={'/tickets'} className="nav-link"> Tickets </Link></button>
-            <button><Link to={'/aid'} className="nav-link"> Aid </Link></button>
-            <button><Link to={'/profile'} className="nav-link"> Profile </Link></button>
-
-          </nav>
-          <hr />
+          <Navbarr events={this.state} />
           <Switch>
+
             <Route exact path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
             <Route path='/discover' render={() => <Discover events={this.state.events} />} />
@@ -60,7 +52,6 @@ class App extends Component {
 
             <Route path='/categories' component={Categories} />
             <Route path='/contacts' component={EmergencyContacts} />
-
 
           </Switch>
         </div>

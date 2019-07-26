@@ -22,12 +22,16 @@ class GoogleMapsContainer extends React.Component {
   }
   render() {
     const style = {
-      width: '50vw',
-      height: '75vh',
-      'marginLeft': 'auto',
-      'marginRight': 'auto'
+      width: 'auto',
+      height: '90%',
+      'marginLeft': '2%',
+      'marginRight': '2%',
+     'marginTop': '0%',
+     'marginBottom': '0%'
+
     }
 
+    // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
       return <Marker
         onClick={this.onMarkerClick}
@@ -48,12 +52,15 @@ class GoogleMapsContainer extends React.Component {
         zoom={14}
         initialCenter={{ lat: 45.5274423, lng: -73.59654979999999 }}
       >
+
+        {/* MARKER CURRENT LOCATION */}
         <Marker
           onClick={this.onMarkerClick}
           title={'Current Location'}
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}
         />
+        {/* MARKER FOR EACH */}
         {allEvents}
       </Map>
     );
