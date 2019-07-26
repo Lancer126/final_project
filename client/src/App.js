@@ -48,7 +48,7 @@ class App extends Component {
             <Route path='/profile' component={Profile} />
             <Route path='/register' component={Register} />
             <Route path='/event/:id' render={() => <EventDetails events={this.state.events} />} />
-
+            
 
             <Route path='/categories' component={Categories} />
             <Route path='/contacts' component={EmergencyContacts} />

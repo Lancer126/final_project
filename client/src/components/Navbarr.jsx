@@ -26,7 +26,7 @@ class Navbarr extends React.Component {
   }
   render() {
     return (
-      <Navbar color="light" light expand="md">
+      <Navbar id = "navbarr" light expand="md">
         <NavbarBrand id = 'titleNav' href="/">Eventure</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
