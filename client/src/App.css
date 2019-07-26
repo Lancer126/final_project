@@ -29,23 +29,12 @@
   overflow: hidden;
 }
 
-/* #homepagebuttons {
-  float: right;
-  padding-right: 10%;
-} */
-#eventure {
-  padding-left: 5%;
-}
-
-#homebtns {
-  float: right;
-  padding-right: 5%;
-  margin-top: -50px;
-}
-
-
 #hmebtn{
   margin: 5px;
+
+}
+#titleNav{ 
+  font-size: xx-large;
 }
 
 

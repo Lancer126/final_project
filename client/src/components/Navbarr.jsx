@@ -27,7 +27,7 @@ class Navbarr extends React.Component {
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Eventure</NavbarBrand>
+        <NavbarBrand id = 'titleNav' href="/">Eventure</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
