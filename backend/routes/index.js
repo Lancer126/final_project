@@ -31,10 +31,10 @@ function searchEvents() {
     unixArray=[]
     for(index of allTimes){
       let unixTime= moment(allTimes[index]).unix()
-      if(unixTime < moment(next).unix()){
+      if(unixTime < moment(next).unix() && unixTime > moment(newDate).unix()){
+        
         unixArray.push(unixTime)
         unixArray.forEach(event => {
-        console.log('after for each')
         client.messages
         .create({
            body: "Hey this is eventure, just checking if everything is going well at the event. Reply no if you need us to contact your emergency contacts.",
@@ -44,7 +44,8 @@ function searchEvents() {
         .then(message => console.log(message.sid));
       })
       
-      }else{console.log('event not in time frame')}
+    }else{console.log('event not in time frame')}
+    
     }
   })
   
@@ -86,16 +87,15 @@ router.post('/sms', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/xml' });
   res.end(twiml.toString());
 
-  axios.post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  if (req.body.Body == 'no') {
+    twiml.message('Hi!');
+  } else if (req.body.Body == 'yes') {
+    twiml.message('Goodbye');
+  } else {
+    twiml.message(
+      'No Body param match, Twilio sends this in the request to your server.'
+    );
+  }
 });
 
 router.post('/posttomessage', (req, res) => {
