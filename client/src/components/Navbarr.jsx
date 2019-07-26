@@ -32,19 +32,22 @@ class Navbarr extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <button id='hmebtn'><Link to={'/map'} className="nav-link"> Map </Link></button>
+              <a id='hmebtn'><Link to={'/map'} className="nav-link"> Map </Link></a>
             </NavItem>
             <NavItem>
-              <button id='hmebtn'><Link to={'/discover'} className="nav-link"> Discover </Link></button>
+              <a id='hmebtn'><Link to={'/discover'} className="nav-link"> Discover </Link></a>
             </NavItem>
             <NavItem>
-              <button id='hmebtn'><Link to={'/search'} className="nav-link"> Search </Link></button>
+              <a id='hmebtn'><Link to={'/search'} className="nav-link"> Search </Link></a>
             </NavItem>
             <NavItem>
-              <button id='hmebtn'><Link to={'/tickets'} className="nav-link"> Tickets </Link></button>
+              <a id='hmebtn'><Link to={'/tickets'} className="nav-link"> Tickets </Link></a>
             </NavItem>
             <NavItem>
-              <button id='hmebtn'><Link to={'/aid'} className="nav-link"> Aid </Link></button>
+              <a id='hmebtn'><Link to={'/aid'} className="nav-link"> Aid </Link></a>
+            </NavItem>
+            <NavItem>
+              <a id= 'hmebtn'><Link to={'/profile'} className="nav-link"> Profile </Link></a>
             </NavItem>
 
           </Nav>
