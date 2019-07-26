@@ -39,13 +39,9 @@
 #navbarr{
   background-color: #87CEFA
 }
-#hmebtn{
-    color: white
-}
-.nav-link{
+#navbarr ul.navbar-nav li a.nav-link{
   color: white
 }
-
 
           
        

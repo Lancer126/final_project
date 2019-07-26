@@ -33,22 +33,22 @@ class Navbarr extends React.Component {
           <Nav className="ml-auto"navbar>
             <NavItem id = 'menutitle'>
 
-              <a id='hmebtn'><Link to={'/map'} className="nav-link"> Map </Link></a>
+              <Link to={'/map'} className="nav-link"> Map </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <a id='hmebtn'><Link to={'/discover'} className="nav-link"> Discover </Link></a>
+              <Link to={'/discover'} className="nav-link"> Discover </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <a id='hmebtn'><Link to={'/search'} className="nav-link"> Search </Link></a>
+              <Link to={'/search'} className="nav-link"> Search </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <a id='hmebtn'><Link to={'/tickets'} className="nav-link"> Tickets </Link></a>
+              <Link to={'/tickets'} className="nav-link"> Tickets </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <a id='hmebtn'><Link to={'/aid'} className="nav-link"> Aid </Link></a>
+              <Link to={'/aid'} className="nav-link"> Aid </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <a id= 'hmebtn'><Link to={'/profile'} className="nav-link"> Profile </Link></a>
+              <Link to={'/profile'} className="nav-link"> Profile </Link>
             </NavItem>
 
           </Nav>
