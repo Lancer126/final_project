@@ -2,51 +2,54 @@ var express = require('express');
 var router = express.Router();
 const axios = require('axios');
 const accountSid = process.env.TWILLIOACCOUNTSID;
+console.log(accountSid)
 const authToken = process.env.TWILLIOAUTHTOKEN;
+console.log(authToken)
 const client = require('twilio')(accountSid, authToken);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const http = require('http');
 //knex config file
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig['development']);
+const moment = require('moment');
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 
-function AddMinutesToDate(date, minutes) {
-  console.log("newdate trigger")
-  return new Date(date.getTime() + minutes*60000);
-}
-function DateFormat(date){
-const days = date.getDate();
-const year = date.getFullYear();
-const month = (date.getMonth()+1);
-const hours = date.getHours();
-const minutes = date.getMinutes();
-minutes = minutes < 10 ? '0' + minutes : minutes;
-const strTime = days + '/' + month + '/' + year + '/ '+hours + ':' + minutes;
-return strTime;
-}
-const now = new Date();
-const next = AddMinutesToDate(now,15);
+const setTime = setInterval(searchEvents, 900000);
 
-while (true) {
-  setTimeout(() => {
-      knex(events)
-          .whereBetween('start_time', [new Date(), DateFormat(next)])
-          .then((filteredEvents) => {
-              filteredEvents.forEach(event => {
-                client.messages
-                .create({
-                   body: "Hey this is eventure, just checking if everything is going well at the event. Reply no if you need us to contact your emergency contacts.",
-                   from: '+15146124974',
-                   to: '+15149796909'
-                 })
-                .then(message => console.log(message.sid));
-              })
-          })
-  }, 900000);
-};
+const newDate = moment();
+const next = moment().add(15, 'minutes');
+
+
+function searchEvents() {
+  console.log("timenow", newDate)
+  console.log("time15", next)
+  knex("events")
+  .select('start_time')
+  .then((allTimes)=>{
+    unixArray=[]
+    for(index of allTimes){
+      let unixTime= moment(allTimes[index]).unix()
+      if(unixTime < moment(next).unix()){
+        unixArray.push(unixTime)
+        unixArray.forEach(event => {
+        console.log('after for each')
+        client.messages
+        .create({
+           body: "Hey this is eventure, just checking if everything is going well at the event. Reply no if you need us to contact your emergency contacts.",
+           from: '+15146124974',
+           to: '+15149796909'
+         })
+        .then(message => console.log(message.sid));
+      })
+      
+      }else{console.log('event not in time frame')}
+    }
+  })
+  
+}
+
 
 /* GET home page. */
 router.get('/event', function (req, res, next) {

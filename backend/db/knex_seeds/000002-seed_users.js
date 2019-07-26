@@ -1,44 +1,50 @@
-const axios = require ("axios")
-const moment = require('moment');
+const faker = require('faker');
 
-const eventArray = [61297232673,
-  53253569861,
-  35885870605,
-  61522649902,
-  58389716213]
-
-  exports.seed = function(knex){
-    const promises = eventArray.map((eventID)=> {
-
-      return axios({
-        method: 'get',
-        url: 'https://www.eventbriteapi.com/v3/events/'+ eventID,
-        headers: {"Authorization": "Bearer "+process.env.EVENTBRITE_TOKEN}
-      })
-        .then(function (response) {
-          // handle success
-          let data =  response.data
-          return knex('events').insert({
-            name: data.name.text,
-           // photo: data.logo?data.logo.orginal.url: null,
-            description: data.summary,
-            start_time: dmoment().format(),
-            end_time: data.end.local,
-            organizer: data.organization_id,
-            //price: data.is_free,
-            location: data.venue_id,
-            tag: data.category_id
-          })
-          //console.log(data);
-          
-        })
-        .catch(function (error) {
-          // handle error
-          console.log('error', error);
-        })
-      
-      //axios api call
-      
-    });
-    return Promise.all([...promises]);
-  }
+exports.seed = function(knex) {
+  // Deletes ALL existing entries
+  return Promise.all([
+    knex('users').del(),
+    knex.raw('ALTER SEQUENCE users_id_seq RESTART WITH 1'),
+    knex('users').then(function() {
+      // Inserts seed entries
+      return knex('users').insert([
+        {
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          phone_number: "5195259581",
+          emergency_contact_name: faker.name.firstName(),
+          emergency_contact_number: "5149796909",
+          first_name: faker.name.firstName(),
+          last_name: faker.name.lastName(),
+        },
+        {
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          phone_number: "4387778885",
+          emergency_contact_name: faker.name.firstName(),
+          emergency_contact_number: "5146496726",
+          first_name: faker.name.firstName(),
+          last_name: faker.name.lastName(),
+        },
+        {
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          phone_number: "5146496726",
+          emergency_contact_name: faker.name.firstName(),
+          emergency_contact_number: "4387778885",
+          first_name: faker.name.firstName(),
+          last_name: faker.name.lastName(),
+        },
+        {
+          email: faker.internet.email(),
+          password: faker.internet.password(),
+          phone_number: "5149796909",
+          emergency_contact_name: faker.name.firstName(),
+          emergency_contact_number: "4387778885",
+          first_name: faker.name.firstName(),
+          last_name: faker.name.lastName(),
+        }
+      ]);
+    }),
+  ]);
+};
