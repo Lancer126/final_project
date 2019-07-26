@@ -32,7 +32,7 @@ function searchEvents() {
     for(index of allTimes){
       let unixTime= moment(allTimes[index]).unix()
       if(unixTime < moment(next).unix() && unixTime > moment(newDate).unix()){
-        
+
         unixArray.push(unixTime)
         unixArray.forEach(event => {
         client.messages
@@ -43,12 +43,12 @@ function searchEvents() {
          })
         .then(message => console.log(message.sid));
       })
-      
+
     }else{console.log('event not in time frame')}
-    
+
     }
   })
-  
+
 }
 
 
@@ -60,7 +60,7 @@ router.get('/event', function (req, res, next) {
     url = url + location_address + location_within + start_date_range_start + start_date_range_end;
     return url;
   }
-  var newURL = buildURL('location.address=montreal&', 'location.within=5km&', 'start_date.range_start=2019-08-01T00:00:01Z&', 'start_date.range_end=2019-08-05T00:00:01Z')
+  var newURL = buildURL('location.address=montreal&', 'location.within=9km&', 'start_date.range_start=2019-08-01T00:00:01Z&', 'start_date.range_end=2019-08-05T00:00:01Z')
 
   axios({
     method: 'get',
