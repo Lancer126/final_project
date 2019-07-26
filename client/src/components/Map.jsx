@@ -23,6 +23,13 @@ console.log(event.target, "test")
       isOpen: false
     });
   }
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
 
   render() {
     const style = {
@@ -36,14 +43,22 @@ console.log(event.target, "test")
 
     // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
-      return <Marker
-        onClick={() => this.handleToggleOpen()}
+      return [<Marker
+        onClick = {this.onMarkerClick}
         key={event.id}
         title={event.name.text}
         position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
         name={event.name.text}
       
-      />
+      />,
+      <InfoWindow 
+         marker={this.state.activeMarker}
+         onClose={this.onInfoWindowClose}
+         visible={this.state.showingInfoWindow}>
+         <h1>test</h1>
+         </InfoWindow>
+      ]
+
     });
 
     return (
@@ -59,7 +74,7 @@ console.log(event.target, "test")
 
         {/* MARKER CURRENT LOCATION */}
         <Marker
-          onClick={this.handleToggleOpen}
+          onClick={this.onMarkerClick}
           title={'Current Location'}
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}
@@ -69,7 +84,9 @@ console.log(event.target, "test")
         <InfoWindow 
          marker={this.state.activeMarker}
          onClose={this.onInfoWindowClose}
-         visible={this.state.showingInfoWindow}>></InfoWindow>
+         visible={this.state.showingInfoWindow}>
+         <h1>test</h1>
+         </InfoWindow>
         {/* MARKER FOR EACH */}
         {allEvents}
       </Map>
