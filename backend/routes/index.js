@@ -84,18 +84,22 @@ router.get('/event', function (req, res, next) {
 router.post('/sms', (req, res) => {
   let eventMessage = req.body.Body
   const twiml = new MessagingResponse();
-  res.writeHead(200, { 'Content-Type': 'text/xml' });
-  res.end(twiml.toString());
 
+console.log(req.body)
   if (req.body.Body == 'no') {
-    twiml.message('Hi!');
+    console.log('test')
+    twiml.message('ok, have a great time');
   } else if (req.body.Body == 'yes') {
-    twiml.message('Goodbye');
+    twiml.message('Were on it');
   } else {
     twiml.message(
       'No Body param match, Twilio sends this in the request to your server.'
     );
   }
+
+
+  res.writeHead(200, { 'Content-Type': 'text/xml' });
+  res.end(twiml.toString());
 });
 
 router.post('/posttomessage', (req, res) => {

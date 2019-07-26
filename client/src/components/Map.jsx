@@ -4,42 +4,61 @@ class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showingInfoWindow: false,
+      isOpen: false,
       activeMarker: {},
       selectedPlace: {}
     }
-    // binding this to event-handler functions
-    this.onMapClick = this.onMapClick.bind(this);
+
   }
 
-  onMapClick = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
+  handleToggleOpen = (event) => {
+console.log(event.target, "test")
+    this.setState({
+      isOpen: true
+    });
   }
+
+  handleToggleClose = () => {
+    this.setState({
+      isOpen: false
+    });
+  }
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+
   render() {
     const style = {
       width: 'auto',
-      height: '90%',
+      height: '80%',
       'marginLeft': '2%',
       'marginRight': '2%',
-     'marginTop': '0%',
-     'marginBottom': '0%'
-
+      'marginTop': '0%',
+      'marginBottom': '0%'
     }
 
     // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
-      return <Marker
-        onClick={this.onMarkerClick}
+      return [<Marker
+        onClick = {this.onMarkerClick}
         key={event.id}
         title={event.name.text}
         position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
         name={event.name.text}
-      />
+      
+      />,
+      <InfoWindow 
+         marker={this.state.activeMarker}
+         onClose={this.onInfoWindowClose}
+         visible={this.state.showingInfoWindow}>
+         <h1>test</h1>
+         </InfoWindow>
+      ]
+
     });
 
     return (
@@ -59,7 +78,15 @@ class GoogleMapsContainer extends React.Component {
           title={'Current Location'}
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}
+          
+        
         />
+        <InfoWindow 
+         marker={this.state.activeMarker}
+         onClose={this.onInfoWindowClose}
+         visible={this.state.showingInfoWindow}>
+         <h1>test</h1>
+         </InfoWindow>
         {/* MARKER FOR EACH */}
         {allEvents}
       </Map>
@@ -69,7 +96,3 @@ class GoogleMapsContainer extends React.Component {
 export default GoogleApiWrapper({
   apiKey: ("AIzaSyBmOjKnCb27NSuwCaY98GW-m0A9Rk9x9eE")
 })(GoogleMapsContainer)
-
-
-
-

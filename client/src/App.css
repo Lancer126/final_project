@@ -30,11 +30,20 @@
 }
 
 #hmebtn{
-  margin: 5px;
-
+ font-size: large;
 }
 #titleNav{ 
   font-size: xx-large;
+  color: white
+}
+#navbarr{
+  background-color: #87CEFA
+}
+#hmebtn{
+    color: white
+}
+.nav-link{
+  color: white
 }
 
 
