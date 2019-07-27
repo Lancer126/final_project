@@ -7,6 +7,7 @@ class GoogleMapsContainer extends React.Component {
       isOpen: false,
       activeMarker: {},
       selectedPlace: {}
+
     }
 
   }
@@ -55,7 +56,7 @@ console.log(event.target, "test")
          marker={this.state.activeMarker}
          onClose={this.onInfoWindowClose}
          visible={this.state.showingInfoWindow}>
-         <h1>test</h1>
+         <p>{event.name.text}</p>
          </InfoWindow>
       ]
 
@@ -78,14 +79,12 @@ console.log(event.target, "test")
           title={'Current Location'}
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}
-          
-        
         />
         <InfoWindow 
          marker={this.state.activeMarker}
          onClose={this.onInfoWindowClose}
          visible={this.state.showingInfoWindow}>
-         <h1>test</h1>
+         <p>Current Location</p>
          </InfoWindow>
         {/* MARKER FOR EACH */}
         {allEvents}
