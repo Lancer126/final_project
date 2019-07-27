@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { kStringMaxLength } from 'buffer';
+import { Formik } from "formik";
+import * as Yup from "yup";
 const axios = require('axios');
 
 class Login extends Component {
@@ -13,8 +15,6 @@ class Login extends Component {
 
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.emailIsInDatabase = this.emailIsInDatabase.bind(this);
   }
 
   handleEmail(event) {
@@ -25,40 +25,6 @@ class Login extends Component {
     this.setState({password: event.target.value});
   }
 
-  emailIsInDatabase(email) {
-    let state = false;
-    axios.get(`/getEmail?email=${email}`)
-    .then(function (response) {
-      alert(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    if(this.state.password && this.state.email) {
-      if( this.emailIsInDatabase(this.state.email)) {
-        this.props.history.push('/map')
-      }
-    }
-    else {
-      alert("You can't have empty fields");
-    }
-  }
-
-  handleOnClick() {
-    window.FB.getLoginStatus(function (response) {
-      if (response.status === 'connected') {
-        window.FB.api('/me', function (response) {
-          console.log(response)
-        })
-      }
-    });
-  }
-
   componentDidMount() {
     window.FB.XFBML.parse();
   }
@@ -67,7 +33,90 @@ class Login extends Component {
     return (
       <div>
 
-        <form onSubmit={this.handleSubmit}>
+  <Formik
+    initialValues={{ email: "", password: "" }}
+    onSubmit={(values, { setSubmitting }) => {
+
+      this.setState({
+        email: values.email,
+        password: values.password
+      })
+      
+      window.event.preventDefault();
+      setTimeout(() => {
+        const self = this;
+
+      axios.post('/login', {
+        user: this.state
+      })
+      .then(function (response) {
+        window.sessionStorage.setItem('user_email', self.state.email);
+        console.log(response);
+        self.props.history.push('/discover')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+        console.log("Logged In", values);
+        setSubmitting(false);
+      }, 500);
+    }}
+    
+    validationSchema={Yup.object().shape({
+      email: Yup.string()
+        .email()
+        .required("Required"),
+      password: Yup.string()
+        .required("No password provided.")
+    })}
+  >
+    {props => {
+      const {
+        values,
+        touched,
+        errors,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit
+      } = props;
+      return (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="text"
+            placeholder="Enter your email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.email && touched.email && "error"}
+          />
+          {errors.email && touched.email && (
+            <div className="input-feedback">{errors.email}</div>
+          )}
+          <label htmlFor="email">Password</label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Enter your password"
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.password && touched.password && "error"}
+          />
+          {errors.password && touched.password && (
+            <div className="input-feedback">{errors.password}</div>
+          )}
+          <button type="submit" disabled={isSubmitting}>
+            Login
+          </button>
+        </form>
+      );
+    }}
+  </Formik>
+
+        {/* <form onSubmit={this.handleSubmit}>
         <label>
           Email
           <input type="text" name="email" value={this.state.email} onChange={this.handleEmail} placeholder="email@email.com"/>
@@ -77,7 +126,7 @@ class Login extends Component {
           <input type="text" name="password" value={this.state.password} onChange={this.handlePassword} placeholder="plz not 1234"/>
         </label>
         <input type="submit" value="Submit" />
-      </form>
+      </form> */}
 
         <br/>
 
