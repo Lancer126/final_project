@@ -136,9 +136,14 @@ router.post('/posttomessage', (req, res) => {
 
 router.post('/register', (req, res) => {
   let name = req.body.user.name.split(' ');
-
-  let repeatedEmail = emailChecker(req.body.user.email);
-  if(!repeatedEmail) {
+  let email = knex('users')
+  .where({'email': req.body.user.email})
+  .then(result => {
+    if(result.length !== 0){
+      res.status(400).json({message: 'Email already in use.'});
+    }
+  })
+ console.log(email)
   return knex('users')
     .insert({
       first_name: name[0],
@@ -149,10 +154,6 @@ router.post('/register', (req, res) => {
     })
     .then(() => res.sendStatus(201))
     .error(err => console.log(err))
-  }
-  else {
-    res.sendStatus(400);
-  }
 })
 
 router.post('/addcontact', (req, res) => {
@@ -168,20 +169,21 @@ router.post('/addcontact', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  let emailExists = emailChecker(req.body.user.email);
-  console.log(req.body.user.password)
-  if (emailExists) {
-    let passwordMatches = passwordChecker(req.body.user.email, req.body.user.password);
-    if(passwordMatches) {
-      res.sendStatus(201);
-    }
-    else {
-      res.sendStatus(400);
-    }
-  }
-  else {
-    res.sendStatus(400);
-  }
+  return knex('users')
+    .where({'email': req.body.user.email})
+    .then((result) => {
+      knex('users')
+      .where({'password': req.body.user.password})
+      .then((resu) => {
+        if(result[0].id === resu[0].id) {
+          res.status(200).json({user_id: req.body.user.email, username: req.body.user.name})
+        }
+        else {
+          res.status(400)
+        }
+      })
+    })
+    .error(err => console.log(err))
 })
 
 module.exports = router;
