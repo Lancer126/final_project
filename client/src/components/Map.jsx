@@ -44,23 +44,23 @@ console.log(event.target, "test")
 
     // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
-      return [<Marker
+      return <Marker
         onClick = {this.onMarkerClick}
         key={event.id}
         title={event.name.text}
         position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
         name={event.name.text}
       
-      />,
-      <InfoWindow 
-         marker={this.state.activeMarker}
-         onClose={this.onInfoWindowClose}
-         visible={this.state.showingInfoWindow}>
-         <p>{event.name.text}</p>
-         </InfoWindow>
-      ]
-
+      />
     });
+    const allTags = this.props.events.map((event) => {
+      return <InfoWindow 
+      marker={this.state.activeMarker}
+      onClose={this.onInfoWindowClose}
+      visible={this.state.showingInfoWindow}>
+      <p>{event.name.text}</p>
+      </InfoWindow>
+    })
 
     return (
       <Map
@@ -88,6 +88,7 @@ console.log(event.target, "test")
          </InfoWindow>
         {/* MARKER FOR EACH */}
         {allEvents}
+        {allTags}
       </Map>
     );
   }
