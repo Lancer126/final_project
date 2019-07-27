@@ -78,7 +78,7 @@ class Register extends Component {
       <div>
 
 <Formik
-    initialValues={{ email: "", password: "", phone: "", name: "" }}
+    initialValues={{ email: "", password: "", phone: "", name: this.state.name }}
     onSubmit={(values, { setSubmitting }) => {
 
       this.setState({
@@ -91,11 +91,12 @@ class Register extends Component {
       setTimeout(() => {
         const self = this;
 
-      axios.post('/adduser', {
+      axios.post('/register', {
         user: this.state
       })
       .then(function (response) {
-        window.sessionStorage.setItem('user_email', self.state.email)
+        window.sessionStorage.setItem('user_email', self.state.email);
+        window.sessionStorage.setItem('user_name', self.state.name);
         console.log(response);
         self.props.history.push('/contacts')
       })

@@ -15,7 +15,6 @@ class Login extends Component {
 
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleEmail(event) {
@@ -24,15 +23,6 @@ class Login extends Component {
 
   handlePassword(event) {
     this.setState({password: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    if(this.state.password && this.state.email) {
-
-      this.props.history.push('/map')
-    }
   }
 
   componentDidMount() {
@@ -46,10 +36,28 @@ class Login extends Component {
   <Formik
     initialValues={{ email: "", password: "" }}
     onSubmit={(values, { setSubmitting }) => {
+
+      this.setState({
+        email: values.email,
+        password: values.password
+      })
       
       window.event.preventDefault();
       setTimeout(() => {
-        console.log("Logging in", values);
+        const self = this;
+
+      axios.post('/login', {
+        user: this.state
+      })
+      .then(function (response) {
+        window.sessionStorage.setItem('user_email', self.state.email);
+        console.log(response);
+        self.props.history.push('/discover')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+        console.log("Logged In", values);
         setSubmitting(false);
       }, 500);
     }}
@@ -60,8 +68,6 @@ class Login extends Component {
         .required("Required"),
       password: Yup.string()
         .required("No password provided.")
-        .min(6, "Password is too short - should be 6 chars minimum.")
-        .matches(/(?=.*[0-9])/, "Password must contain a number.")
     })}
   >
     {props => {

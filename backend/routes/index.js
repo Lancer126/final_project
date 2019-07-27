@@ -12,11 +12,6 @@ const http = require('http');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig['development']);
 const moment = require('moment');
-const cookieSession = require("cookie-session");    //Allows for cookies
-app.use(cookieSession({ //Allows for cookies
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -26,11 +21,29 @@ const setTime = setInterval(searchEvents, 900000);
 const newDate = moment();
 const next = moment().add(15, 'minutes');
 
-function emailChecker(email) {
-  return knex("users")
-    .where({'email': email})
-    .then((result) => res.sendStatus(201).json(result))
-    .error(err => console.log(err))
+//Checks if the email exists
+async function emailChecker(email) {
+  const res = await knex("users").where('email', email);
+  if (res[0]) {
+    return res[0].id;
+  }
+  else {
+    return false;
+  }
+}
+
+//Checks if the password matches
+async function passwordChecker(email, password) {
+  const res = await knex("users").where('email', email);
+  console.log("Res:", res)
+  if (res.length === 0) {
+    return false;
+  }
+  else {
+    console.log(res[0].password)
+    console.log(password)
+    return res[0].password === password;
+  }
 }
 
 
@@ -121,8 +134,11 @@ router.post('/posttomessage', (req, res) => {
 
 })
 
-router.post('/adduser', (req, res) => {
+router.post('/register', (req, res) => {
   let name = req.body.user.name.split(' ');
+
+  let repeatedEmail = emailChecker(req.body.user.email);
+  if(!repeatedEmail) {
   return knex('users')
     .insert({
       first_name: name[0],
@@ -133,12 +149,14 @@ router.post('/adduser', (req, res) => {
     })
     .then(() => res.sendStatus(201))
     .error(err => console.log(err))
-
+  }
+  else {
+    res.sendStatus(400);
+  }
 })
 
 router.post('/addcontact', (req, res) => {
-  let repeatedEmail = emailChecker(req.body.email);
-  return knex('users')
+    return knex('users')
     .where({'email': req.body.email})
     .update({
       emergency_contact_name: req.body.name,
@@ -150,17 +168,20 @@ router.post('/addcontact', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  return knex("users")
-    .where({'email': req.body.email})
-    .then((result) => {
-      return knex("users")
-        .where({'result.password': req.body.password})
-        .then((resu) => res.sendStatus(201).json(result))
-        .error(err => console.log(err))
-    
-    })
-    .error(err => console.log(err))
-
+  let emailExists = emailChecker(req.body.user.email);
+  console.log(req.body.user.password)
+  if (emailExists) {
+    let passwordMatches = passwordChecker(req.body.user.email, req.body.user.password);
+    if(passwordMatches) {
+      res.sendStatus(201);
+    }
+    else {
+      res.sendStatus(400);
+    }
+  }
+  else {
+    res.sendStatus(400);
+  }
 })
 
 module.exports = router;
