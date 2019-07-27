@@ -20,17 +20,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      email: ''
     }
   }
 
   componentDidMount() {
     fetch('/event').then(data => data.json()).then(response => this.setState({ events: response }));
-
-    console.log(this.state);
+    if(window.sessionStorage.getItem('user_email')) {
+      this.setState({email: window.sessionStorage.getItem('user_email')})
+    }
   }
-
-
 
   render() {
     return (

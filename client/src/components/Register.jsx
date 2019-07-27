@@ -18,7 +18,6 @@ class Register extends Component {
     this.handleName = this.handleName.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
     this.handlePhone = this.handlePhone.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleEmail(event) {
@@ -35,28 +34,6 @@ class Register extends Component {
 
   handlePhone(event) {
     this.setState({phone: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const self = this;
-
-    if(this.state.name && this.state.email && this.state.password && this.state.phone) {
-      axios.post('/adduser', {
-        user: this.state
-      })
-      .then(function (response) {
-        window.sessionStorage.setItem('user_email', self.state.email)
-        console.log(response);
-        self.props.history.push('/contacts')
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-    else {
-      alert("You can't have empty fields");
-    }
   }
 
   componentDidMount() {
@@ -78,7 +55,7 @@ class Register extends Component {
       <div>
 
 <Formik
-    initialValues={{ email: "", password: "", phone: "", name: this.state.name }}
+    initialValues={{ email: "", password: "", phone: "", name: "" }}
     onSubmit={(values, { setSubmitting }) => {
 
       this.setState({
@@ -188,7 +165,7 @@ class Register extends Component {
             <div className="input-feedback">{errors.name}</div>
           )}
           <button type="submit" disabled={isSubmitting}>
-            Login
+            Register
           </button>
         </form>
       );
