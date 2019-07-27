@@ -22,12 +22,19 @@ class EventDetails extends Component {
         }
       }
       var display = findEvent(url)
+
+
       console.log(display);
 
       return (
         <div>
           <h3>{display.name.text}</h3>
+          <span>{display.start.local}</span>
+          <span>{display.venue.name}</span>
+          <span>{display.venue.address.address_1}</span>
           <p>{display.description.text}</p>
+
+          <button>Attend</button>
           <button>Request Assistances</button>
           <button>Set Reminder</button>
 
