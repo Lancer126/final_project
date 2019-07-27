@@ -9,6 +9,10 @@ class Event extends Component {
   render() {
     const link = '/event/'+this.props.event.id;
     return (
+      
+
+
+
         <div className="eventbox">
           <div>
           <a href={link}>{this.props.event.name.text}</a>
