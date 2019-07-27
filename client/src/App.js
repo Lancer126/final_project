@@ -37,6 +37,7 @@ class App extends Component {
       <Router>
         <div>
           <Navbarr events={this.state} />
+
           <Switch>
 
             <Route exact path='/login' component={Login} />

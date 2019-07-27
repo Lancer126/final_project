@@ -12,6 +12,11 @@ const http = require('http');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig['development']);
 const moment = require('moment');
+const cookieSession = require("cookie-session");    //Allows for cookies
+app.use(cookieSession({ //Allows for cookies
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +25,13 @@ const setTime = setInterval(searchEvents, 900000);
 
 const newDate = moment();
 const next = moment().add(15, 'minutes');
+
+function emailChecker(email) {
+  return knex("users")
+    .where({'email': email})
+    .then((result) => res.sendStatus(201).json(result))
+    .error(err => console.log(err))
+}
 
 
 function searchEvents() {
@@ -119,28 +131,34 @@ router.post('/adduser', (req, res) => {
       password: req.body.user.password,
       phone_number: Number.parseInt(req.body.user.phone)
     })
-    .then((u) => res.sendStatus(u))
+    .then(() => res.sendStatus(201))
     .error(err => console.log(err))
 
 })
 
 router.post('/addcontact', (req, res) => {
+  let repeatedEmail = emailChecker(req.body.email);
   return knex('users')
     .where({'email': req.body.email})
     .update({
       emergency_contact_name: req.body.name,
       emergency_contact_number: Number.parseInt(req.body.phone)
     })
-    .then((u) => res.sendStatus(u))
+    .then(() => res.sendStatus(201))
     .error(err => console.log(err))
 
 })
 
-router.get('/getEmail', (req, res) => {
-  console.log('This is req.params.email', req.params.email)
-  return knex('users')
-    .where({'email': req.params.email})
-    .then((u) => res.sendStatus(u))
+router.post('/login', (req, res) => {
+  return knex("users")
+    .where({'email': req.body.email})
+    .then((result) => {
+      return knex("users")
+        .where({'result.password': req.body.password})
+        .then((resu) => res.sendStatus(201).json(result))
+        .error(err => console.log(err))
+    
+    })
     .error(err => console.log(err))
 
 })
