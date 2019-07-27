@@ -7,6 +7,7 @@ class GoogleMapsContainer extends React.Component {
       isOpen: false,
       activeMarker: {},
       selectedPlace: {}
+
     }
 
   }

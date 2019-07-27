@@ -42,7 +42,9 @@
 #navbarr ul.navbar-nav li a.nav-link{
   color: white
 }
-
+#navbarr ul.navbar-nav li a.nav-link:hover{
+  color: black
+}
           
        
           
