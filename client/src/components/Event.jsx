@@ -6,6 +6,19 @@ class Event extends Component {
   constructor(props){
     super(props);
   }
+
+  handleClick = (event) => {
+    console.log(event.target.value);
+    axios.post('/event', {
+      data: this.state
+    })
+    .then(function (response) {
+      console.log('response sent: ', response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   render() {
     const link = '/event/'+this.props.event.id;
     return (
@@ -18,7 +31,7 @@ class Event extends Component {
           <span>{this.props.event.start.local}</span>
           <p>{this.props.event.summary}</p>
 
-          <button>Attend</button>
+          <button onClick={this.handleClick}>Attend</button>
 
         </div>
 
