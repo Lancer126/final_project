@@ -55,8 +55,14 @@ class EmergencyContacts extends Component {
       })
       .then(function (response) {
         window.sessionStorage.setItem('contact_phone', self.state.phone);
-        window.sessionStorage.setItem('contact_name', self.state.name);
-        self.props.history.push('/discover')
+        if(window.sessionStorage.getItem('contact_name')){
+          window.sessionStorage.setItem('contact_name', self.state.name);
+          self.props.history.push(`/profile`);
+        }
+        else {
+          window.sessionStorage.setItem('contact_name', self.state.name);
+          window.location.replace('/discover');
+        }
       })
       .catch(function (error) {
         console.log(error);

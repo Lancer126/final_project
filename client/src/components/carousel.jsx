@@ -1,15 +1,19 @@
 import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 
 const CarouselPage = (props) => {
 
   const events = props.events;
+  const link = '/event/'+events.id;
+  console.log(link)
   
   return (
     <MDBContainer>
       <MDBCarousel
+      id="carouselpadding"
       activeItem={1}
       length={50}
       showControls={true}
@@ -20,10 +24,11 @@ const CarouselPage = (props) => {
       <MDBCarouselInner>
       {events.map((event, index) => { 
       return (
-        <div className="carouselView">
+        <Link to={'/event/'+event.id}>
         <MDBCarouselItem itemId={index}>
           <MDBView>
             <img
+            style={{height:"600px",maxWidth:"auto"}}
               className="d-block w-100"
               src={event.logo? event.logo.original.url:null}
               alt="First slide"
@@ -35,7 +40,7 @@ const CarouselPage = (props) => {
             <p>{'@'+ event.venue.name}</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
-        </div>
+        </Link>
       )})
     }
       </MDBCarouselInner>

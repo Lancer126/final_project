@@ -95,7 +95,6 @@ router.get('/event', function (req, res, next) {
     .then(function (response) {
       // handle success
       let data =  response.data.events
-      console.log(data);
       res.json(data);
     })
     .catch(function (error) {
@@ -199,6 +198,7 @@ router.post('/register', (req, res) => {
     })
     .then(() => res.sendStatus(201))
     .error(err => console.log(err))
+    .catch(e => console.log(e))
 })
 
 router.post('/addcontact', (req, res) => {
@@ -214,22 +214,19 @@ router.post('/addcontact', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
-  return knex('users')
-    .where({'email': req.body.user.email})
-    .then((result) => {
-      knex('users')
-      .where({'password': req.body.user.password})
-      .then((resu) => {
-        if(result[0].id === resu[0].id) {
-          res.status(200).json({phone: resu.phone_number, name: resu.first_name,
-            contact_phone: resu.emergency_contact_number, contact_name: resu.emergency_contact_name})
+  knex('users')
+    .where({'email': req.body.email})
+    .then((resu) => {
+        if(resu[0].password === req.body.password) {
+          res.status(200).json({phone: resu[0].phone_number, email: resu[0].email, name: resu[0].last_name ? resu[0].first_name+" "+resu[0].last_name : resu[0].first_name,
+            contact_phone: resu[0].emergency_contact_number, contact_name: resu[0].emergency_contact_name})
         }
         else {
           res.status(400)
         }
-      })
     })
     .error(err => console.log(err))
+    .catch(err => console.log(err))
 })
 
 module.exports = router;
