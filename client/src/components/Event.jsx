@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventDetails from './EventDetails';
+const axios = require('axios');
 
 class Event extends Component {
 
@@ -10,7 +11,7 @@ class Event extends Component {
   handleClick = (event) => {
     console.log(event.target.value);
     axios.post('/event', {
-      data: this.state
+      data: this.props.event
     })
     .then(function (response) {
       console.log('response sent: ', response);
