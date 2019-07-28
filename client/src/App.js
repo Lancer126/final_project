@@ -14,6 +14,7 @@ import EmergencyContacts from './components/EmergencyContacts';
 import Test from './components/carousel';
 import './App.css';
 import Navbarr from './components/Navbarr';
+import MyEvents from './components/MyEvents'
 
 
 class App extends Component {
@@ -52,7 +53,7 @@ class App extends Component {
             <Route path='/event/:id' render={() => <EventDetails events={this.state.events} />} />
             <Route path='/profile' component={Profile} />
             <Route path='/test' render={() => < Test events={this.state.events} />} />
-            
+            <Route path='/myevents' component={MyEvents} />
 
             <Route path='/categories' component={Categories} />
             <Route path='/contacts' component={EmergencyContacts} />

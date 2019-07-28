@@ -12,7 +12,6 @@ class Discover extends Component {
 
   render() {
     const events = this.props.events;
-    console.log(this.props.events);
     const allEvents = events.map((event) => {
       return <Event event={event} key={event.id}/>
     });

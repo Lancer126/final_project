@@ -144,6 +144,15 @@ router.post('/event', function(req,res,next){
 
 })
 
+router.get('/myevents', (req, res) => {
+ knex.select('*').from('events')
+   .then((data) => {
+       res.json(data);
+   })
+   .error(err => console.log(err))
+   .catch(err => console.log(err))
+})
+
 
 //receiving a text message
 router.post('/sms', (req, res) => {
