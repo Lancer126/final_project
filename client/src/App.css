@@ -38,7 +38,6 @@
 }
 #navbarr{
   background-color: #87CEFA;
-  padding-bottom: 10px;
 }
 #navbarr ul.navbar-nav li a.nav-link{
   color: white
@@ -46,6 +45,16 @@
 #navbarr ul.navbar-nav li a.nav-link:hover{
   color: black
 }
+.carouselDiv{
+  border-block-color: black;
+  width:80%;
+  height:40% !important;
+  padding-bottom: 30px;
+}
+#carouselpadding {
+padding-top: 5px;
+}
+
           
        
           
