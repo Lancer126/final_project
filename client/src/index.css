@@ -13,3 +13,6 @@ body {
 .eventboximg{
   width: 100%;
 }
+.displaycenter{
+  align-self: auto;
+}

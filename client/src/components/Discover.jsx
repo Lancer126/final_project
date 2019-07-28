@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Event from './Event';
 import CarouselPage from './carousel'
+import allEventbutton from "./alleventsbutton"
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class Discover extends Component {
 
@@ -16,19 +18,12 @@ class Discover extends Component {
     });
 
     return (
-      <div>
-<CarouselPage events={events}/>
-        <h3>Discover</h3>
-
-        <h3>Trending</h3>
-
-        <h3>Upcoming</h3>
-
-        <div>
-        {allEvents}
-        </div>
-
-        </div>
+      <div className="container">
+        <CarouselPage events={events}/>
+        <div className="allEventsButton">
+          <Link to='/search'><allEventbutton/></Link>
+        </div> 
+      </div> 
     );
   }
 }
