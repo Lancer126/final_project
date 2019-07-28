@@ -2,11 +2,10 @@ import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 
+
 const CarouselPage = (props) => {
 
   const events = props.events;
-  
-
   
   return (
     <MDBContainer>
@@ -40,7 +39,11 @@ const CarouselPage = (props) => {
       </MDBCarouselInner>
     </MDBCarousel>
     </MDBContainer>
+
   );
+  
 }
 
+
 export default CarouselPage;
+

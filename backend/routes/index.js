@@ -21,6 +21,31 @@ const setTime = setInterval(searchEvents, 900000);
 const newDate = moment();
 const next = moment().add(15, 'minutes');
 
+//Checks if the email exists
+async function emailChecker(email) {
+  const res = await knex("users").where('email', email);
+  if (res[0]) {
+    return res[0].id;
+  }
+  else {
+    return false;
+  }
+}
+
+//Checks if the password matches
+async function passwordChecker(email, password) {
+  const res = await knex("users").where('email', email);
+  console.log("Res:", res)
+  if (res.length === 0) {
+    return false;
+  }
+  else {
+    console.log(res[0].password)
+    console.log(password)
+    return res[0].password === password;
+  }
+}
+
 
 function searchEvents() {
   console.log("timenow", newDate)
@@ -113,8 +138,16 @@ router.post('/posttomessage', (req, res) => {
 
 })
 
-router.post('/adduser', (req, res) => {
+router.post('/register', (req, res) => {
   let name = req.body.user.name.split(' ');
+  let email = knex('users')
+  .where({'email': req.body.user.email})
+  .then(result => {
+    if(result.length !== 0){
+      res.status(400).json({message: 'Email already in use.'});
+    }
+  })
+ console.log(email)
   return knex('users')
     .insert({
       first_name: name[0],
@@ -123,30 +156,38 @@ router.post('/adduser', (req, res) => {
       password: req.body.user.password,
       phone_number: Number.parseInt(req.body.user.phone)
     })
-    .then((u) => res.sendStatus(u))
+    .then(() => res.sendStatus(201))
     .error(err => console.log(err))
-
 })
 
 router.post('/addcontact', (req, res) => {
-  return knex('users')
+    return knex('users')
     .where({'email': req.body.email})
     .update({
       emergency_contact_name: req.body.name,
       emergency_contact_number: Number.parseInt(req.body.phone)
     })
-    .then((u) => res.sendStatus(u))
+    .then(() => res.sendStatus(201))
     .error(err => console.log(err))
 
 })
 
-router.get('/getEmail', (req, res) => {
-  console.log('This is req.params.email', req.params.email)
+router.post('/login', (req, res) => {
   return knex('users')
-    .where({'email': req.params.email})
-    .then((u) => res.sendStatus(u))
+    .where({'email': req.body.user.email})
+    .then((result) => {
+      knex('users')
+      .where({'password': req.body.user.password})
+      .then((resu) => {
+        if(result[0].id === resu[0].id) {
+          res.status(200).json({user_id: req.body.user.email, username: req.body.user.name})
+        }
+        else {
+          res.status(400)
+        }
+      })
+    })
     .error(err => console.log(err))
-
 })
 
 module.exports = router;
