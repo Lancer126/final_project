@@ -57,7 +57,8 @@ class EmergencyContacts extends Component {
         email: window.sessionStorage.getItem('user_email')
       })
       .then(function (response) {
-        console.log(response);
+        window.sessionStorage.setItem('contact_phone', this.state.phone1);
+        window.sessionStorage.setItem('contact_name', this.state.name1);
         self.props.history.push('/map')
       })
       .catch(function (error) {
