@@ -81,7 +81,7 @@ function searchEvents() {
 router.get('/event', function (req, res, next) {
 
   function buildURL(location_address, location_within, start_date_range_start, start_date_range_end) {
-    var url = "https://www.eventbriteapi.com/v3/events/search/?expand=venue,ticket_classes&";
+    var url = "https://www.eventbriteapi.com/v3/events/search/?expand=venue,ticket_classes,organizer&";
     url = url + location_address + location_within + start_date_range_start + start_date_range_end;
     return url;
   }
@@ -103,6 +103,47 @@ router.get('/event', function (req, res, next) {
       console.log('error', error);
     })
 });
+
+router.post('/event', function(req,res,next){
+  res.json({mclovin:'lovin'})
+
+  console.log(req.body);
+  console.log(req.body.data.organizer.name)
+
+  knex.select('id','name').from('events').where({name: req.body.data.name.text}).then(value => {
+    console.log('RESULT IS: ', value)
+
+    if(value.length === 0){
+      console.log('TITS MCGEE')
+
+      knex('events').insert([{
+        id: parseInt(req.body.data.id),
+        name: req.body.data.name.text,
+        start_time: req.body.data.start.local,
+        end_time: req.body.data.end.local,
+        organizer: req.body.data.organizer.name,
+        location: req.body.data.venue.name
+      }])
+      .then(knex('attendees').insert([{
+        user_id: 69,
+        event_id: parseInt(req.body.data.id)
+      }]).then())
+
+
+    }
+  }).finally()
+  /*knex('events')
+    .insert({
+      first_name: name[0],
+      last_name: name[1],
+      email: req.body.user.email,
+      password: req.body.user.password,
+      phone_number: Number.parseInt(req.body.user.phone)
+  })*/
+  // store req.body into event table using knex
+  // store req.body.event.id and current user into attendee table knex
+
+})
 
 
 //receiving a text message
