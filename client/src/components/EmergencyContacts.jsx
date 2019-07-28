@@ -57,8 +57,8 @@ class EmergencyContacts extends Component {
         email: window.sessionStorage.getItem('user_email')
       })
       .then(function (response) {
-        window.sessionStorage.setItem('contact_phone', this.state.phone1);
-        window.sessionStorage.setItem('contact_name', this.state.name1);
+        window.sessionStorage.setItem('contact_phone', self.state.phone1);
+        window.sessionStorage.setItem('contact_name', self.state.name1);
         self.props.history.push('/map')
       })
       .catch(function (error) {
@@ -75,11 +75,11 @@ class EmergencyContacts extends Component {
         <br/>
         <label>
           Name
-          <input type="text" name="phone1" value={this.state.name1} onChange={this.handleName1} placeholder="Tits McGee"/>
+          <input type="text" name="phone1" value={this.state.name1} onChange={this.handleName1} placeholder="Enter Name"/>
         </label>
         <label>
           Phone
-          <input type="text" value={this.state.phone1} onChange={this.handlePhone1} name="phone1" placeholder="4387778885"/>
+          <input type="text" value={this.state.phone1} onChange={this.handlePhone1} name="phone1" placeholder="1234567890"/>
         </label>
         <input type="submit" value="Submit" />
       </form>

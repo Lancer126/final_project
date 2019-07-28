@@ -74,7 +74,8 @@ class Register extends Component {
       .then(function (response) {
         window.sessionStorage.setItem('user_email', self.state.email);
         window.sessionStorage.setItem('user_name', self.state.name);
-        console.log(response);
+        window.sessionStorage.setItem('user_phone', self.state.phone);
+        console.log("Phone: ", self.state.phone);
         self.props.history.push('/contacts')
       })
       .catch(function (error) {
