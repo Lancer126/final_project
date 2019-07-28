@@ -13,27 +13,6 @@ class Register extends Component {
         password: '',
         phone: ''
     };
-
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handleName = this.handleName.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-    this.handlePhone = this.handlePhone.bind(this);
-  }
-
-  handleEmail(event) {
-    this.setState({email: event.target.value});
-  }
-
-  handleName(event) {
-    this.setState({name: event.target.value});
-  }
-
-  handlePassword(event) {
-    this.setState({password: event.target.value});
-  }
-
-  handlePhone(event) {
-    this.setState({phone: event.target.value});
   }
 
   componentDidMount() {
@@ -75,7 +54,6 @@ class Register extends Component {
         window.sessionStorage.setItem('user_email', self.state.email);
         window.sessionStorage.setItem('user_name', self.state.name);
         window.sessionStorage.setItem('user_phone', self.state.phone);
-        console.log("Phone: ", self.state.phone);
         self.props.history.push('/contacts')
       })
       .catch(function (error) {
