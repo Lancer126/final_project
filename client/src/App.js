@@ -11,7 +11,7 @@ import Register from './components/Register';
 import EventDetails from './components/EventDetails';
 import Categories from './components/Categories';
 import EmergencyContacts from './components/EmergencyContacts';
-import Test from './components/test';
+import Test from './components/carousel';
 import './App.css';
 import Navbarr from './components/Navbarr';
 

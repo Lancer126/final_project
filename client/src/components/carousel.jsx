@@ -20,6 +20,7 @@ const CarouselPage = (props) => {
       <MDBCarouselInner>
       {events.map((event, index) => { 
       return (
+        <div className="carouselView">
         <MDBCarouselItem itemId={index}>
           <MDBView>
             <img
@@ -34,6 +35,7 @@ const CarouselPage = (props) => {
             <p>{'@'+ event.venue.name}</p>
           </MDBCarouselCaption>
         </MDBCarouselItem>
+        </div>
       )})
     }
       </MDBCarouselInner>

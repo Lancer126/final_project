@@ -37,7 +37,8 @@
   color: white
 }
 #navbarr{
-  background-color: #87CEFA
+  background-color: #87CEFA;
+  padding-bottom: 10px;
 }
 #navbarr ul.navbar-nav li a.nav-link{
   color: white
