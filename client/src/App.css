@@ -96,3 +96,12 @@
 .back {
 	transform: rotateY(180deg);
 }
+
+#evntbtn{
+  float: right;
+}
+
+#mrenfo{
+  float: right;
+  font-size: large;
+}

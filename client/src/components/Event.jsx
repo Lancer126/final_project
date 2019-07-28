@@ -23,7 +23,7 @@ class Event extends Component {
     <span>{this.props.event.start.local}</span>
           <p>{this.props.event.summary}...</p>
           {/* <Link to={link}><button>More Info</button></Link> */}
-          <Link to={link} className="nav-link"><button> More Info </button></Link>
+          <Link to={link} className="nav-link"><button id = "evntbtn"> More Info </button></Link>
 		</div>
 	</div>
 </div>
