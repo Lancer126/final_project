@@ -7,16 +7,16 @@ class GoogleMapsContainer extends React.Component {
       isOpen: false,
       activeMarker: {},
       selectedPlace: {}
-
     }
-
   }
 
   handleToggleOpen = (event) => {
-console.log(event.target, "test")
-    this.setState({
-      isOpen: true
-    });
+
+    if (event.id === this.props.events.id) {
+      this.setState({
+        isOpen: true
+      });
+    }
   }
 
   handleToggleClose = () => {
@@ -25,6 +25,7 @@ console.log(event.target, "test")
     });
   }
   onMarkerClick = (props, marker, e) => {
+
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -44,23 +45,19 @@ console.log(event.target, "test")
 
     // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
+
       return <Marker
-        onClick = {this.onMarkerClick}
+        onClick={this.onMarkerClick}
         key={event.id}
         title={event.name.text}
         position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
         name={event.name.text}
-      
+        description={event.description.text}
       />
     });
-    const allTags = this.props.events.map((event) => {
-      return <InfoWindow 
-      marker={this.state.activeMarker}
-      onClose={this.onInfoWindowClose}
-      visible={this.state.showingInfoWindow}>
-      <p>{event.name.text}</p>
-      </InfoWindow>
-    })
+
+
+
 
     return (
       <Map
@@ -80,15 +77,24 @@ console.log(event.target, "test")
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}
         />
-        <InfoWindow 
-         marker={this.state.activeMarker}
-         onClose={this.onInfoWindowClose}
-         visible={this.state.showingInfoWindow}>
-         <p>Current Location</p>
-         </InfoWindow>
+        <InfoWindow
+          marker={this.state.activeMarker}
+          onClose={this.onInfoWindowClose}
+          visible={this.state.showingInfoWindow}>
+          <p>Current Location</p>
+        </InfoWindow>
         {/* MARKER FOR EACH */}
         {allEvents}
-        {allTags}
+
+        <InfoWindow
+
+          marker={this.state.activeMarker}
+          onClose={this.onInfoWindowClose}
+          visible={this.state.showingInfoWindow}>
+          <h4>{this.state.activeMarker.name}</h4>
+          <p>{this.state.activeMarker.description}</p>
+          <button>Event Details</button>
+        </InfoWindow>
       </Map>
     );
   }
