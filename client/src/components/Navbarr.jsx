@@ -25,6 +25,14 @@ class Navbarr extends React.Component {
     });
   }
   render() {
+    let login_profile = "";
+    if(window.sessionStorage.getItem('user_email')) {
+      login_profile = <Link to={'/profile'} className="nav-link"> Profile </Link>
+    }
+    else {
+      login_profile = <Link to={'/login'} className="nav-link">Login</Link>
+    }
+
     return (
       <Navbar id = "navbarr" light expand="md">
         <NavbarBrand id = 'titleNav' href="/">Eventure</NavbarBrand>
@@ -48,7 +56,7 @@ class Navbarr extends React.Component {
               <Link to={'/aid'} className="nav-link"> Aid </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <Link to={'/profile'} className="nav-link"> Profile </Link>
+              {login_profile}
             </NavItem>
 
           </Nav>

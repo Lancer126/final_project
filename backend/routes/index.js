@@ -180,7 +180,8 @@ router.post('/login', (req, res) => {
       .where({'password': req.body.user.password})
       .then((resu) => {
         if(result[0].id === resu[0].id) {
-          res.status(200).json({user_id: req.body.user.email, username: req.body.user.name})
+          res.status(200).json({phone: resu.phone_number, name: resu.first_name,
+            contact_phone: resu.emergency_contact_number, contact_name: resu.emergency_contact_name})
         }
         else {
           res.status(400)

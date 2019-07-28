@@ -43,6 +43,7 @@ class Login extends Component {
       })
       
       window.event.preventDefault();
+
       setTimeout(() => {
         const self = this;
 
@@ -51,7 +52,6 @@ class Login extends Component {
       })
       .then(function (response) {
         window.sessionStorage.setItem('user_email', self.state.email);
-        console.log(response);
         self.props.history.push('/discover')
       })
       .catch(function (error) {
@@ -59,7 +59,10 @@ class Login extends Component {
       });
         console.log("Logged In", values);
         setSubmitting(false);
-      }, 500);
+      }
+      , 500);
+
+      
     }}
     
     validationSchema={Yup.object().shape({
@@ -138,7 +141,7 @@ class Login extends Component {
           data-use-continue-as="true"
         ></div>
         <br/>
-        Not already a user? Register <Link to={'/register'} className="nav-link">here</Link>
+        Not already a user?<Link to={'/register'} className="nav-link">Register</Link>
 
       </div>
     );

@@ -19,6 +19,7 @@ class Login extends Component {
   }
 
   render() {
+
     let email = window.sessionStorage.getItem('user_email');
     let phone = window.sessionStorage.getItem('user_phone');
     let name = window.sessionStorage.getItem('user_name');
@@ -33,15 +34,12 @@ class Login extends Component {
 <br/>
 <h2>Emergency Contact</h2>
 <h3>{contact_name}: {contact_phone}</h3>
+<Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
+<br/>
 <h4>Check-in</h4>
 <h3>{phone}</h3>
-
+<br/>
 <button onClick={this.onLogout}>Logout</button>
-<br/>
-<Link to={'/login'} className="nav-link">Login</Link>
-<br/>
-<Link to={'/register'} className="nav-link">Register</Link>
-
         </div>
     );
   }

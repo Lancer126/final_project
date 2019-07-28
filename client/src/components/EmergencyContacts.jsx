@@ -1,50 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Formik } from "formik";
+import * as Yup from "yup";
 const axios = require('axios');
 
 class EmergencyContacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name1: '',
-        phone1: '',
-        name2: '',
-        phone2: '',
-        name3: '',
-        phone3: ''
-    };
-
-    this.handlePhone1 = this.handlePhone1.bind(this);
-    this.handleName1 = this.handleName1.bind(this);
-    this.handlePhone2 = this.handlePhone2.bind(this);
-    this.handleName2 = this.handleName2.bind(this);
-    this.handlePhone3 = this.handlePhone3.bind(this);
-    this.handleName3 = this.handleName3.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handlePhone1(event) {
-    this.setState({phone1: event.target.value});
-  }
-
-  handleName1(event) {
-    this.setState({name1: event.target.value});
-  }
-
-  handlePhone2(event) {
-    this.setState({phone2: event.target.value});
-  }
-
-  handleName2(event) {
-    this.setState({name2: event.target.value});
-  }
-
-  handlePhone3(event) {
-    this.setState({phone3: event.target.value});
-  }
-
-  handleName3(event) {
-    this.setState({name3: event.target.value});
+        name: '',
+        phone: ''
+    }
   }
 
   handleSubmit(event) {
@@ -70,7 +36,93 @@ class EmergencyContacts extends Component {
     return (
       <div>
 
-        <form onSubmit={this.handleSubmit}>
+<Formik
+    initialValues={{ name: "", phone: "" }}
+    onSubmit={(values, { setSubmitting }) => {
+
+      this.setState({
+        name: values.name,
+        phone: values.phone
+      })
+      
+    window.event.preventDefault();
+    var self = this;
+    
+      axios.post('/addcontact', {
+        name: this.state.name,
+        phone: this.state.phone,
+        email: window.sessionStorage.getItem('user_email')
+      })
+      .then(function (response) {
+        window.sessionStorage.setItem('contact_phone', self.state.phone);
+        window.sessionStorage.setItem('contact_name', self.state.name);
+        self.props.history.push('/discover')
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      
+    }}
+    
+    validationSchema={Yup.object().shape({
+      name: Yup.string()
+        .required("Required"),
+      phone: Yup.number()
+        .required("Required.")
+        .min(1000000000, "Phone must be 10 chars long.")
+        .max(9999999999, "Phone must be 10 chars long."),
+    })}
+  >
+    {props => {
+      const {
+        values,
+        touched,
+        errors,
+        isSubmitting,
+        handleChange,
+        handleBlur,
+        handleSubmit
+      } = props;
+      return (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Emergency Contact</label>
+          <br/>
+          <label htmlFor="email">Name</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="Enter contact name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.name && touched.name && "error"}
+          />
+          {errors.name && touched.name && (
+            <div className="input-feedback">{errors.name}</div>
+          )}
+          <label htmlFor="email">Number</label>
+          <input
+            name="phone"
+            type="text"
+            placeholder="Enter contact number"
+            value={values.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={errors.phone && touched.phone && "error"}
+          />
+          {errors.phone && touched.phone && (
+            <div className="input-feedback">{errors.phone}</div>
+          )}
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </form>
+      );
+    }}
+  </Formik>
+
+        {/* <form onSubmit={this.handleSubmit}>
           Emergency Contact
         <br/>
         <label>
@@ -82,7 +134,7 @@ class EmergencyContacts extends Component {
           <input type="text" value={this.state.phone1} onChange={this.handlePhone1} name="phone1" placeholder="1234567890"/>
         </label>
         <input type="submit" value="Submit" />
-      </form>
+      </form> */}
 
       </div>
     );
