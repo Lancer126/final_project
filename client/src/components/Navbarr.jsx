@@ -53,7 +53,7 @@ class Navbarr extends React.Component {
               <Link to={'/tickets'} className="nav-link"> Tickets </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <Link to={'/aid'} className="nav-link"> Aid </Link>
+              <Link to={'/myevents'} className="nav-link"> My Events </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
               {login_profile}
