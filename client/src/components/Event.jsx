@@ -16,7 +16,7 @@ class Event extends Component {
 	<div class="flipper">
 		<div class="front">
     <h4>{this.props.event.name.text}</h4>
-    {this.props.event.logo? <img className="eventboximg" style={{height:"200px", maxWidth: "auto"}} src={this.props.event.logo.original.url} /> : null}
+    {this.props.event.logo? <img className="eventboximg" style={{maxHeight:"180px", maxWidth: "auto"}} src={this.props.event.logo.original.url} /> : null}
 		</div>
 		<div class="back">
     <h4>{this.props.event.name.text}</h4>
