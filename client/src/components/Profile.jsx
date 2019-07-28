@@ -15,7 +15,7 @@ class Login extends Component {
     window.sessionStorage.setItem('user_name', "");
     window.sessionStorage.setItem('contact_name', "");
     window.sessionStorage.setItem('contact_phone', "");
-    this.props.history.push('/discover')
+    window.location.replace('/discover');
   }
 
   render() {
@@ -28,18 +28,19 @@ class Login extends Component {
     return (
         <div>
 
-<h3>{name}</h3>
+<h3>Name: {name}</h3>
 
-<h3>{email}</h3>
+<h3>Email: {email}</h3>
 <br/>
 <h2>Emergency Contact</h2>
 <h3>{contact_name}: {contact_phone}</h3>
 <Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
 <br/>
+<h3>Phone: {phone}</h3>
 <h4>Check-in</h4>
-<h3>{phone}</h3>
 <br/>
 <button onClick={this.onLogout}>Logout</button>
+
         </div>
     );
   }

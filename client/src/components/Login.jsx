@@ -12,17 +12,6 @@ class Login extends Component {
       email: '',
       password: ''
     };
-
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-  }
-
-  handleEmail(event) {
-    this.setState({email: event.target.value});
-  }
-
-  handlePassword(event) {
-    this.setState({password: event.target.value});
   }
 
   componentDidMount() {
@@ -47,21 +36,27 @@ class Login extends Component {
       setTimeout(() => {
         const self = this;
 
-      axios.post('/login', {
-        user: this.state
-      })
-      .then(function (response) {
-        window.sessionStorage.setItem('user_email', self.state.email);
-        self.props.history.push('/discover')
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-        console.log("Logged In", values);
-        setSubmitting(false);
+        fetch('/login', {
+          method:'POST',
+          headers:{ "Content-Type" : "application/json" },
+          body: JSON.stringify({ email: values.email,  password: values.password })
+        })
+          .then(function(response) {
+            return response.json();
+          })
+          .then( user => {
+            window.sessionStorage.setItem("user_name", user.name);
+            window.sessionStorage.setItem("user_email", user.email);
+            window.sessionStorage.setItem("user_phone", user.phone);
+            window.sessionStorage.setItem("contact_name", user.contact_name);
+            window.sessionStorage.setItem("contact_phone", user.contact_phone);
+            window.location.replace('/discover');
+          })
+          .catch(e => {
+            console.log(e)
+          })
       }
       , 500);
-
       
     }}
     
@@ -118,29 +113,15 @@ class Login extends Component {
       );
     }}
   </Formik>
-
-        {/* <form onSubmit={this.handleSubmit}>
-        <label>
-          Email
-          <input type="text" name="email" value={this.state.email} onChange={this.handleEmail} placeholder="email@email.com"/>
-        </label>
-        <label>
-          Password
-          <input type="text" name="password" value={this.state.password} onChange={this.handlePassword} placeholder="plz not 1234"/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form> */}
-
         <br/>
 
-        <div className="fb-login-button"
+        {/* <div className="fb-login-button"
           data-width=""
           data-size="large"
           data-button-type="continue_with"
           data-auto-logout-link="true"
           data-use-continue-as="true"
-        ></div>
-        <br/>
+        ></div> */}
         Not already a user?<Link to={'/register'} className="nav-link">Register</Link>
 
       </div>
