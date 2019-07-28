@@ -93,7 +93,7 @@ class GoogleMapsContainer extends React.Component {
           visible={this.state.showingInfoWindow}>
           <h4>{this.state.activeMarker.name}</h4>
           <p>{this.state.activeMarker.description}</p>
-          <button>Event Details</button>
+          <button id = "mapeventbtn">Event Details</button>
         </InfoWindow>
       </Map>
     );

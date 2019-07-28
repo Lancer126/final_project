@@ -70,38 +70,29 @@ class Search extends Component {
   render() {
     console.log(this.state.events)
     var allEvents = this.state.events.map((event) => {
-      return <Event event={event} key={event.id}/>
+      return (
+        <div className="col-md-4">
+      <Event event={event} key={event.id}/>
+      </div>
+
+      )
     });
     return (
       <div>
-        <h3>Price</h3>
+       <h4>Search Eventure</h4>
         <form>
-        <input type="radio" onClick={this.handleClick} value={true}/><label>Free</label>
-        <input type="radio" onClick={this.handleClick} value={false}/><label>Paid</label>
+        <input type="radio" name="group1" onClick={this.handleClick} value={true}/><label>Free</label>
+        <input type="radio" name="group1"onClick={this.handleClick} value={false}/><label>Paid</label>
+
+  
+
         </form>
-
-
-        <h3>Date</h3>
-
-        <label>Before Date</label><input type="date" onChange={this.handleStartDate}/>
-
-        <label>End Date</label><input type="date" onChange={this.handleEndDate}/>
-
-        <h3>Interests</h3>
-        <input type="checkbox"/><label>Interest Example</label>
-
-        <label>Event Name</label><input type="text"/>
-
-        <h3>Distance</h3>
-        <input type="text" onKeyUp={this.handleInput}/>
-
-        <button onClick={this.handleSubmit}>Submit</button>
-
-        <h3>Search</h3>
         <input type="text" onChange={this.handleSearch} placeholder="Search events by name..."/>
-
-        <div>
+        <button onClick={this.handleSubmit}>Search</button>
+        <div className = "container">
+          <div className="row" style={{padding:"10px"}}>
           {allEvents}
+        </div>
         </div>
 
       </div>
