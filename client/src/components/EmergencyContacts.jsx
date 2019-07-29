@@ -9,14 +9,11 @@ class EmergencyContacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        user_name: '',
         name: '',
         phone: ''
     }
   }
-
-  // componentDidMount() {
-  //   document.body.classList.add('loginBg');
-  // }
 
   render() {
     let navbar = "";
@@ -27,12 +24,14 @@ class EmergencyContacts extends Component {
     return (
       <div>
       {navbar}
+      <div className="login-box">
 
 <Formik
-    initialValues={{ name: "", phone: "" }}
+    initialValues={{ user_name: "", name: "", phone: "" }}
     onSubmit={(values, { setSubmitting }) => {
 
       this.setState({
+        user_name: values.user_name,
         name: values.name,
         phone: values.phone
       })
@@ -41,12 +40,14 @@ class EmergencyContacts extends Component {
     var self = this;
     
       axios.post('/addcontact', {
+        user_name: this.state.user_name,
         name: this.state.name,
         phone: this.state.phone,
         email: window.sessionStorage.getItem('user_email')
       })
       .then(function (response) {
         window.sessionStorage.setItem('contact_phone', self.state.phone);
+        window.sessionStorage.setItem('user_name', self.state.user_name);
         if(window.sessionStorage.getItem('contact_name')){
           window.sessionStorage.setItem('contact_name', self.state.name);
           self.props.history.push(`/profile`);
@@ -64,6 +65,8 @@ class EmergencyContacts extends Component {
     }}
     
     validationSchema={Yup.object().shape({
+      user_name: Yup.string()
+        .required("Required"),
       name: Yup.string()
         .required("Required"),
       phone: Yup.number()
@@ -84,56 +87,56 @@ class EmergencyContacts extends Component {
       } = props;
       return (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Emergency Contact</label>
+          <h1>Profile</h1>
+          <input
+          type="text"
+          name="name"
+          value={values.user_name}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="Enter your name"
+          className="textbox"
+        />
+          {errors.user_name && touched.user_name && (
+            <div className="input-feedback">{errors.user_name}</div>
+          )}
           <br/>
-          <label htmlFor="email">Name</label>
+          <br/>
           <input
             name="name"
             type="text"
-            placeholder="Enter contact name"
+            placeholder="Emergency contact name"
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.name && touched.name && "error"}
+            className="textbox"
           />
           {errors.name && touched.name && (
             <div className="input-feedback">{errors.name}</div>
           )}
-          <label htmlFor="email">Number</label>
           <input
             name="phone"
             type="text"
-            placeholder="Enter contact number"
+            placeholder="Emergency contact number"
             value={values.phone}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.phone && touched.phone && "error"}
+            className="textbox"
           />
           {errors.phone && touched.phone && (
             <div className="input-feedback">{errors.phone}</div>
           )}
-          <button type="submit" disabled={isSubmitting}>
+          <button className="btn" type="submit" disabled={isSubmitting}>
             Submit
           </button>
         </form>
       );
     }}
   </Formik>
-
-        {/* <form onSubmit={this.handleSubmit}>
-          Emergency Contact
-        <br/>
-        <label>
-          Name
-          <input type="text" name="phone1" value={this.state.name1} onChange={this.handleName1} placeholder="Enter Name"/>
-        </label>
-        <label>
-          Phone
-          <input type="text" value={this.state.phone1} onChange={this.handlePhone1} name="phone1" placeholder="1234567890"/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form> */}
-
+      <br/>
+      <h6>This is a placeholder paragraph.</h6>
+      Yeah.
+      </div>
       </div>
     );
   }

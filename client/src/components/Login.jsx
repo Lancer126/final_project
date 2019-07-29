@@ -16,6 +16,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.remove('registerBg');
     document.body.classList.add('loginBg');
   }
 
@@ -82,7 +83,7 @@ class Login extends Component {
       return (
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-          <i className="fa fa-user" aria-hidden="true"></i>
+          {/* <i className="fa fa-user" aria-hidden="true"></i> */}
           <input
             name="email"
             type="text"
@@ -95,7 +96,7 @@ class Login extends Component {
           {errors.email && touched.email && (
             <div className="input-feedback">{errors.email}</div>
           )}
-          <i className="fa fa-lock" aria-hidden="true"></i>
+          {/* <i className="fa fa-lock" aria-hidden="true"></i> */}
           <input
             name="password"
             type="password"

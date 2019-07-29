@@ -17,6 +17,7 @@ class Register extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.remove('loginBg');
     document.body.classList.add('registerBg');
   }
 
@@ -36,7 +37,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className="login-box">
 
 <Formik
     initialValues={{ email: "", password: "", phone: "", name: "" }}
@@ -45,7 +46,6 @@ class Register extends Component {
       this.setState({
         email: values.email,
         phone: values.phone,
-        name: values.name,
         password: values.password
       })
       window.event.preventDefault();
@@ -57,7 +57,6 @@ class Register extends Component {
       })
       .then(function (response) {
         window.sessionStorage.setItem('user_email', self.state.email);
-        window.sessionStorage.setItem('user_name', self.state.name);
         window.sessionStorage.setItem('user_phone', self.state.phone);
         self.props.history.push('/contacts')
       })
@@ -97,7 +96,8 @@ class Register extends Component {
       } = props;
       return (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
+          <h1>Register</h1>
+          {/* <i className="fa fa-user" aria-hidden="true"></i> */}
           <input
             name="email"
             type="text"
@@ -105,12 +105,12 @@ class Register extends Component {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.email && touched.email && "error"}
+            className="textbox"
           />
           {errors.email && touched.email && (
             <div className="input-feedback">{errors.email}</div>
           )}
-          <label htmlFor="email">Password</label>
+          {/* <i className="fa fa-lock" aria-hidden="true"></i> */}
           <input
             name="password"
             type="password"
@@ -118,37 +118,38 @@ class Register extends Component {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
+            className="textbox"
           />
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
           )}
-          <label htmlFor="email"> Phone </label>
+          {/* <i className="fa fa-lock" aria-hidden="true"></i> */}
           <input
             type="text"
             name="phone"
             value={values.phone}
             onChange={handleChange}
             onBlur={handleBlur}
-            placeholder="00000000000"
-            className={errors.phone && touched.phone && "error"}
+            placeholder="Enter your phone number"
+            className="textbox"
           />
           {errors.phone && touched.phone && (
             <div className="input-feedback">{errors.phone}</div>
           )}
-        <label htmlFor="email"> Name </label>
-        <input
+          {/* <i className="fa fa-lock" aria-hidden="true"></i> */}
+        {/* <input
           type="text"
           name="name"
           value={values.name}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder="John Wick"
+          placeholder="Enter your name"
+          className="textbox"
         />
           {errors.name && touched.name && (
             <div className="input-feedback">{errors.name}</div>
-          )}
-          <button type="submit" disabled={isSubmitting}>
+          )} */}
+          <button className="btn" type="submit" disabled={isSubmitting}>
             Register
           </button>
         </form>

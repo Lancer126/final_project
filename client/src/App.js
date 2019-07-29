@@ -51,7 +51,6 @@ class App extends Component {
             <Route path='/profile' component={Profile} />
             <Route path='/test' render={() => < Test events={this.state.events} />} />
             <Route path='/myevents' component={MyEvents} />
-
             <Route path='/contacts' component={EmergencyContacts} />
 
           </Switch>

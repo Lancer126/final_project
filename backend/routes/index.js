@@ -21,32 +21,6 @@ const setTime = setInterval(searchEvents, 900000);
 const newDate = moment();
 const next = moment().add(15, 'minutes');
 
-//Checks if the email exists
-async function emailChecker(email) {
-  const res = await knex("users").where('email', email);
-  if (res[0]) {
-    return res[0].id;
-  }
-  else {
-    return false;
-  }
-}
-
-//Checks if the password matches
-async function passwordChecker(email, password) {
-  const res = await knex("users").where('email', email);
-  console.log("Res:", res)
-  if (res.length === 0) {
-    return false;
-  }
-  else {
-    console.log(res[0].password)
-    console.log(password)
-    return res[0].password === password;
-  }
-}
-
-
 function searchEvents() {
   console.log("timenow", newDate)
   console.log("time15", next)
@@ -188,19 +162,15 @@ router.post('/posttomessage', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  let name = req.body.user.name.split(' ');
-  let email = knex('users')
+  knex('users')
   .where({'email': req.body.user.email})
   .then(result => {
     if(result.length !== 0){
       res.status(400).json({message: 'Email already in use.'});
     }
   })
- console.log(email)
-  return knex('users')
+    knex('users')
     .insert({
-      first_name: name[0],
-      last_name: name[1],
       email: req.body.user.email,
       password: req.body.user.password,
       phone_number: Number.parseInt(req.body.user.phone)
@@ -211,15 +181,18 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/addcontact', (req, res) => {
+    let name = req.body.user_name.split(' ');
+
     return knex('users')
     .where({'email': req.body.email})
     .update({
+      first_name: name[0],
+      last_name: name[1],
       emergency_contact_name: req.body.name,
       emergency_contact_number: Number.parseInt(req.body.phone)
     })
     .then(() => res.sendStatus(201))
     .error(err => console.log(err))
-
 })
 
 router.post('/login', (req, res) => {

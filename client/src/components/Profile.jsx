@@ -10,6 +10,12 @@ class Login extends Component {
     this.onLogout = this.onLogout.bind(this);
   }
 
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+    document.body.classList.remove('registerBg');
+    document.body.classList.add('loginBg');
+  }
+
   onLogout() {
     window.sessionStorage.setItem('user_email', "");
     window.sessionStorage.setItem('user_phone', "");
