@@ -56,9 +56,36 @@
 #carouselpadding {
 padding-top: 5px;
 }
+.eventdetails{
+  width: 80%
+}
+
+#eventfirstrow{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  height:400px;
+}
 
 #mapeventbtn{
   float: right;
+#detailsinfo{
+  color: white;
+  height: 100%;
+  width: 40%;
+  background-color: #F76c6c;
+}
+#detailphoto{
+  width: 60%;
+}
+#eventinfo{
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.whitespace:after {
+  content: '\A';
+  white-space: pre;
 }
           
 .flip-container {
