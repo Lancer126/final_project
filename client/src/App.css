@@ -61,7 +61,6 @@ padding-top: 5px;
   float: right;
 }
           
-<<<<<<< HEAD
 .flip-container {
   perspective: 1000px;
   
@@ -124,7 +123,6 @@ padding-top: 5px;
   justify-content: center;
    padding: 20px;
 } */
-=======
 body {
   margin: 0 !important;
   padding: 0 !important;
@@ -191,4 +189,3 @@ body {
           
             
        
->>>>>>> feature/login-register
