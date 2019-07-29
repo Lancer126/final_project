@@ -14,25 +14,6 @@ class EmergencyContacts extends Component {
     }
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    var self = this;
-    
-      axios.post('/addcontact', {
-        name: this.state.name1,
-        phone: this.state.phone1,
-        email: window.sessionStorage.getItem('user_email')
-      })
-      .then(function (response) {
-        window.sessionStorage.setItem('contact_phone', self.state.phone1);
-        window.sessionStorage.setItem('contact_name', self.state.name1);
-        self.props.history.push('/map')
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   render() {
     let navbar = "";
     if(window.sessionStorage.getItem('contact_name')) {

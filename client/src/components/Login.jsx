@@ -15,9 +15,9 @@ class Login extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   window.FB.XFBML.parse();
-  // }
+  componentDidMount() {
+    document.body.classList.add('loginBg');
+  }
 
   render() {
     return (

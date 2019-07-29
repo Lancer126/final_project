@@ -123,7 +123,8 @@ padding-top: 5px;
   justify-content: center;
    padding: 20px;
 } */
-body {
+
+.loginBg {
   margin: 0 !important;
   padding: 0 !important;
   font-family: sans-serif !important;
