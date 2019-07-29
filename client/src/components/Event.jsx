@@ -29,20 +29,6 @@ class Event extends Component {
       <div>
 
 
-
-        <div>
-          <div className="eventbox">
-          <a href={link}>{this.props.event.name.text}</a>
-          </div>
-          {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}
-
-          <span>{this.props.event.start.local}</span>
-          <p>{this.props.event.summary}</p>
-
-          <button>Attend</button>
-
-        </div>
-
       <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 	<div class="flipper">
 		<div class="front">
