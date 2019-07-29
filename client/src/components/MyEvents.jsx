@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AttendingEvent from './AttendingEvents';
+import Navbarr from './Navbarr';
 
 class MyEvents extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class MyEvents extends Component {
 
     return(
       <div>
+        <Navbarr />
         <h2>My Events </h2>
         {attendingEvents}
 
