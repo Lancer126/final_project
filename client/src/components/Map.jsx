@@ -48,7 +48,7 @@ class GoogleMapsContainer extends React.Component {
       height: '80%',
       'marginLeft': '2%',
       'marginRight': '2%',
-      'marginTop': '0%',
+      'marginTop': '5px',
       'marginBottom': '0%'
     }
 
@@ -88,7 +88,7 @@ class GoogleMapsContainer extends React.Component {
 
         {/* MARKER CURRENT LOCATION */}
         <Marker
-          onClick={this.onMarkerClick}
+           icon={"icon.png"}
           title={'Current Location'}
           position={{ lat: 45.5274423, lng: -73.59654979999999 }}
           name={'Current Location'}

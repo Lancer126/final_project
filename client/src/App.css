@@ -145,6 +145,11 @@ padding-top: 5px;
   float: right;
   font-size: large;
 }
+#mrenfo:hover{
+  float: right;
+  font-size: large;
+  color: black
+}
 
 /* #filter{
   display: flex;
@@ -260,7 +265,7 @@ body{
 }
 
 .searchTerm:focus{
-  color: #87CEFA;
+  color:black;
 }
 
 .searchButton {
