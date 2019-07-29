@@ -21,6 +21,8 @@ const setTime = setInterval(searchEvents, 900000);
 const newDate = moment();
 const next = moment().add(15, 'minutes');
 
+
+
 //Checks if the email exists
 async function emailChecker(email) {
   const res = await knex("users").where('email', email);
@@ -106,46 +108,67 @@ router.get('/event', function (req, res, next) {
 router.post('/event', function(req,res,next){
   res.json({mclovin:'lovin'})
 
-  console.log(req.body);
-  console.log(req.body.data.organizer.name)
+
 
   knex.select('id','name').from('events').where({name: req.body.data.name.text}).then(value => {
     console.log('RESULT IS: ', value)
+    var eventID = 0;
+
+    if(value.length !== 0){
+      eventID = value[0].id;
+    }
 
     if(value.length === 0){
       console.log('TITS MCGEE')
 
       knex('events').insert([{
-        id: parseInt(req.body.data.id),
         name: req.body.data.name.text,
         start_time: req.body.data.start.local,
         end_time: req.body.data.end.local,
         organizer: req.body.data.organizer.name,
-        location: req.body.data.venue.name
+        location: req.body.data.venue.name,
+        api_id: req.body.data.id
       }])
-      .then(knex('attendees').insert([{
-        user_id: 69,
-        event_id: parseInt(req.body.data.id)
-      }]).then())
-
-
+      .returning('id')
+      .then(function([id]){
+        eventID = id;
+        console.log('SET ID TO: ', eventID)
+      })
+      .catch(e => console.log(e))
     }
+
+
+    knex.select('event_id').from('attendees').where({user_id: 1}).then(value => {
+
+      var found = false;
+
+      for(var i = 0; i < value.length; i++) {
+          if (value[i].event_id === eventID) {
+              found = true;
+              break;
+          }
+      }
+
+      if(found===false){
+        //console.log('prestige worldwide', eventID)
+        knex('attendees').insert([{
+              user_id: 1,
+              event_id: eventID
+              }])
+        .then(res => console.log('EVENTS REGISTERED: ',res))
+        .catch(e => console.log(e))
+      }
+    })
   }).finally()
-  /*knex('events')
-    .insert({
-      first_name: name[0],
-      last_name: name[1],
-      email: req.body.user.email,
-      password: req.body.user.password,
-      phone_number: Number.parseInt(req.body.user.phone)
-  })*/
-  // store req.body into event table using knex
-  // store req.body.event.id and current user into attendee table knex
+
+
 
 })
 
 router.get('/myevents', (req, res) => {
- knex.select('*').from('events')
+ knex('events')
+  .join('attendees', 'events.id', 'attendees.event_id')
+  .select('*').where({'user_id': 1})
    .then((data) => {
        res.json(data);
    })
