@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import Navbarr from './Navbarr';
 
 class Tickets extends Component {
+  
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+  }
+
   render() {
     return (
         <div>

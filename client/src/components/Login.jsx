@@ -16,8 +16,11 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    document.body.classList.remove('registerBg');
     document.body.classList.add('loginBg');
+  }
+
+  componentWillDismount() {
+    document.body.classList.remove('loginBg');
   }
 
   render() {

@@ -15,6 +15,10 @@ class EmergencyContacts extends Component {
     }
   }
 
+  componentDidMount() {
+    document.body.classList.add('loginBg');
+  }
+
   render() {
     let navbar = "";
     if(window.sessionStorage.getItem('contact_name')) {

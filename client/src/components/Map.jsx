@@ -13,6 +13,10 @@ class GoogleMapsContainer extends React.Component {
     }
   }
 
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+  }
+
   handleToggleOpen = (event) => {
 
     if (event.id === this.props.events.id) {
