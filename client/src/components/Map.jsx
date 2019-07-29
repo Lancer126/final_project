@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -34,6 +35,8 @@ class GoogleMapsContainer extends React.Component {
   }
 
   render() {
+    //const link = '/event/'+ this.props.events.id;
+
     const style = {
       width: 'auto',
       height: '80%',
@@ -46,6 +49,8 @@ class GoogleMapsContainer extends React.Component {
     // EACH EVENT DATA
     const allEvents = this.props.events.map((event) => {
 
+      var url = '/event/' + event.id;
+        
       return <Marker
         onClick={this.onMarkerClick}
         key={event.id}
@@ -53,10 +58,11 @@ class GoogleMapsContainer extends React.Component {
         position={{ lat: event.venue.latitude, lng: event.venue.longitude }}
         name={event.name.text}
         description={event.description.text}
+        url={url}
       />
     });
 
-
+    
 
 
     return (
@@ -93,7 +99,8 @@ class GoogleMapsContainer extends React.Component {
           visible={this.state.showingInfoWindow}>
           <h4>{this.state.activeMarker.name}</h4>
           <p>{this.state.activeMarker.description}</p>
-          <button>Event Details</button>
+          <a href={this.state.activeMarker.url} id = "mrenfo">More Info</a>
+          
         </InfoWindow>
       </Map>
     );

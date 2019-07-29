@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import EventDetails from './EventDetails';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const axios = require('axios');
+
+
 
 class Event extends Component {
 
@@ -23,23 +26,22 @@ class Event extends Component {
   render() {
     const link = '/event/'+this.props.event.id;
     return (
-      
 
-
-
-        <div className="eventbox">
-          <div>
-          <a href={link}>{this.props.event.name.text}</a>
-          </div>
-          {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}
-
-          <span>{this.props.event.start.local}</span>
-          <p>{this.props.event.summary}</p>
-
-          <button onClick={this.handleClick}>Attend</button>
-
-        </div>
-
+      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+    <h4>{this.props.event.name.text}</h4>
+    {this.props.event.logo? <img className="eventboximg" style={{maxHeight:"180px", maxWidth: "auto"}} src={this.props.event.logo.original.url} /> : null}
+		</div>
+		<div class="back">
+    <h4>{this.props.event.name.text}</h4>
+    <span>{this.props.event.start.local}</span>
+          <p>{this.props.event.summary}...</p>
+          {/* <Link to={link}><button>More Info</button></Link> */}
+          <Link to={link} className="nav-link"><button id = "evntbtn"> More Info </button></Link>
+		</div>
+	</div>
+</div>
 
     );
   }
