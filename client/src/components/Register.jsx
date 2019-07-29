@@ -16,6 +16,10 @@ class Register extends Component {
     };
   }
 
+  componentDidMount() {
+    document.body.classList.add('registerBg');
+  }
+
   // componentDidMount() {
   //   window.FB.getLoginStatus(response => {
   //       if (response.status === 'connected') {

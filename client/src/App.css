@@ -128,7 +128,20 @@ padding-top: 5px;
   margin: 0 !important;
   padding: 0 !important;
   font-family: sans-serif !important;
-  background: url("./fire.png") no-repeat !important;
+  background:
+  /* top, transparent black, faked with gradient */ 
+  linear-gradient(
+    rgba(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.7)
+  ),url("./music.jpg") no-repeat !important;
+  background-size: cover !important;
+}
+
+.registerBg {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: sans-serif !important;
+  background: url("./bg.png") no-repeat !important;
   background-size: cover !important;
 }
 
@@ -139,7 +152,6 @@ padding-top: 5px;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   color: white !important;
-
 }
 
 .login-box h1 {
