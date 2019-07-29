@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Navbarr from './Navbarr';
 
+
+const moment = require('moment');
+
 class EventDetails extends Component {
   constructor(props){
     super(props);
@@ -28,6 +31,9 @@ class EventDetails extends Component {
       console.log(display);
 
       return (
+        <div>
+        <Navbarr/>
+        <div className="centertoview">
         <div className="eventdetails">
           {/* photo to the top left */}
         <div id="eventfirstrow">
@@ -35,21 +41,26 @@ class EventDetails extends Component {
           <img src={display.logo? display.logo.original.url:null} style={{height:"100%",width:"100%"}}/>
           </div>
           <div id="detailsinfo" >
-          <h4 className="whitespace">{display.name.text}</h4>
-          <span className="whitespace">{display.start.local}</span>
+          <span className="whitespace">{moment(display.start.local).format("MMM Do YY")}</span>
+          <h5 className="whitespace">{display.name.text}</h5>
           <span className="whitespace">{display.venue.name}</span>
           <span className="whitespace">{display.venue.address.address_1}</span>
           </div>
         </div>
-          <div>
-          <button>Attend</button>
-          <button>Request Assistances</button>
-          <button>Set Reminder</button>
+          <div id="eventbuttons">
+            <div id="eventspace">
+            
+          <button className="buttonevent" style={{maxHeight:"75%"}}>Attend</button>
+          <button className="buttonevent" style={{maxHeight:"75%"}}>Request Assistances</button>
+          <button className="buttonevent" style={{maxHeight:"75%"}}>Set Reminder</button>
+            </div>  
           </div>
-<div id="eventinfo">
-          <p>{display.description.text}</p>
+          
+        <div id="eventinfo" dangerouslySetInnerHTML={{__html:display.description.html}}>
         </div>
         </div>
+        </div>
+        </div> 
 
 
 
