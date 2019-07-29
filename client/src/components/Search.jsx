@@ -98,8 +98,6 @@ class Search extends Component {
         </form>
         <input id= "search-input" type="text" onChange={this.handleSearch} placeholder="Search events by name..."/>
         <button id = "search-button" onClick={this.handleSubmit}>Search</button>
-        
-
         <div className = "container">
           <div className="row" style={{padding:"10px"}}>
           {allEvents}
