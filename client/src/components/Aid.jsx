@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Aid extends Component {
@@ -32,6 +33,7 @@ class Aid extends Component {
      
 
   <div>
+  <Navbarr />
       <h3>Warning Text</h3>
 <button>Request Aid Now</button>
 <form onSubmit={this.handleSubmit}>

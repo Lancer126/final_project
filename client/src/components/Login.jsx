@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { kStringMaxLength } from 'buffer';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Login extends Component {
@@ -14,13 +15,13 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    window.FB.XFBML.parse();
-  }
+  // componentDidMount() {
+  //   window.FB.XFBML.parse();
+  // }
 
   render() {
     return (
-      <div>
+      <div className="login-box">
 
   <Formik
     initialValues={{ email: "", password: "" }}
@@ -80,7 +81,8 @@ class Login extends Component {
       } = props;
       return (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
+          <h1>Login</h1>
+          <i className="fa fa-user" aria-hidden="true"></i>
           <input
             name="email"
             type="text"
@@ -88,12 +90,12 @@ class Login extends Component {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.email && touched.email && "error"}
+            className="textbox"
           />
           {errors.email && touched.email && (
             <div className="input-feedback">{errors.email}</div>
           )}
-          <label htmlFor="email">Password</label>
+          <i className="fa fa-lock" aria-hidden="true"></i>
           <input
             name="password"
             type="password"
@@ -101,12 +103,12 @@ class Login extends Component {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
+            className="textbox"
           />
           {errors.password && touched.password && (
             <div className="input-feedback">{errors.password}</div>
           )}
-          <button type="submit" disabled={isSubmitting}>
+          <button className="btn" type="submit" disabled={isSubmitting}>
             Login
           </button>
         </form>

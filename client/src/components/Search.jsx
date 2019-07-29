@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Event from './Event';
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Search extends Component {
@@ -78,8 +79,12 @@ class Search extends Component {
       )
     });
     return (
+      <div>
+      <Navbarr />
+
       <div className="container" style={{textAlign: 'center'}}>
        <h4 id = "search-title">Search Eventure</h4>
+        <h3>Price</h3>
         <form>
         <input id = "free-radio" type="radio" name="group1" onClick={this.handleClick} value={true}/><label>Free</label>
         <input id = "paid-radio" type="radio" name="group1"onClick={this.handleClick} value={false}/><label>Paid</label>
@@ -96,7 +101,7 @@ class Search extends Component {
           {allEvents}
         </div>
         </div>
-
+      </div>
       </div>
     );
   }

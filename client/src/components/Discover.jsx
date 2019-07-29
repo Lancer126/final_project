@@ -3,6 +3,7 @@ import Event from './Event';
 import CarouselPage from './carousel'
 import allEventbutton from "./alleventsbutton"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Navbarr from './Navbarr';
 
 class Discover extends Component {
 
@@ -17,12 +18,15 @@ class Discover extends Component {
     });
 
     return (
+      <div>
+      <Navbarr />
       <div className="container">
         <CarouselPage events={events}/>
         <div className="allEventsButton">
           <Link to='/search'><allEventbutton/></Link>
         </div> 
       </div> 
+      </div>
     );
   }
 }

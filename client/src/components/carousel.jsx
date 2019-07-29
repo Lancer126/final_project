@@ -2,6 +2,7 @@ import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Navbarr from './Navbarr';
 
 
 const CarouselPage = (props) => {
@@ -11,6 +12,8 @@ const CarouselPage = (props) => {
   console.log(link)
   
   return (
+    <div>
+    <Navbarr />
     <MDBContainer>
       <MDBCarousel
       id="carouselpadding"
@@ -46,7 +49,7 @@ const CarouselPage = (props) => {
       </MDBCarouselInner>
     </MDBCarousel>
     </MDBContainer>
-
+    </div>
   );
   
 }

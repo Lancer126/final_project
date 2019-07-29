@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Register extends Component {
@@ -15,19 +16,19 @@ class Register extends Component {
     };
   }
 
-  componentDidMount() {
-    window.FB.getLoginStatus(response => {
-        if (response.status === 'connected') {
-          window.FB.api('/me', response => {
-            this.setState({
-              name: response.name,
-              email: response.email,
-              phone: response.phone
-            });
-          })
-        }
-      });
-  }
+  // componentDidMount() {
+  //   window.FB.getLoginStatus(response => {
+  //       if (response.status === 'connected') {
+  //         window.FB.api('/me', response => {
+  //           this.setState({
+  //             name: response.name,
+  //             email: response.email,
+  //             phone: response.phone
+  //           });
+  //         })
+  //       }
+  //     });
+  // }
 
   render() {
     return (
