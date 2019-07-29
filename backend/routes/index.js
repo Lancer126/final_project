@@ -162,6 +162,7 @@ router.post('/posttomessage', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
+  console.log("Register")
   knex('users')
   .where({'email': req.body.user.email})
   .then(result => {

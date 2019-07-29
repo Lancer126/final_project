@@ -39,7 +39,7 @@ class Register extends Component {
       <div className="login-box">
 
 <Formik
-    initialValues={{ email: "", password: "", phone: "", name: "" }}
+    initialValues={{ email: "", password: "", phone: "" }}
     onSubmit={(values, { setSubmitting }) => {
 
       this.setState({
@@ -55,6 +55,7 @@ class Register extends Component {
         user: this.state
       })
       .then(function (response) {
+        console.log("Allo")
         window.sessionStorage.setItem('user_email', self.state.email);
         window.sessionStorage.setItem('user_phone', self.state.phone);
         self.props.history.push('/contacts')
@@ -78,9 +79,7 @@ class Register extends Component {
       phone: Yup.number()
         .required("Required")
         .min(1000000000, "Phone must be 10 chars long.")
-        .max(9999999999, "Phone must be 10 chars long."),
-      name: Yup.string()
-        .required("Required")
+        .max(9999999999, "Phone must be 10 chars long.")
     })}
   >
     {props => {

@@ -94,7 +94,7 @@ class EmergencyContacts extends Component {
           <h1>Profile</h1>
           <input
           type="text"
-          name="name"
+          name="user_name"
           value={values.user_name}
           onChange={handleChange}
           onBlur={handleBlur}
