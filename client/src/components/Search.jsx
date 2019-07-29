@@ -78,17 +78,19 @@ class Search extends Component {
       )
     });
     return (
-      <div>
-       <h4>Search Eventure</h4>
+      <div className="container" style={{textAlign: 'center'}}>
+       <h4 id = "search-title">Search Eventure</h4>
         <form>
-        <input type="radio" name="group1" onClick={this.handleClick} value={true}/><label>Free</label>
-        <input type="radio" name="group1"onClick={this.handleClick} value={false}/><label>Paid</label>
+        <input id = "free-radio" type="radio" name="group1" onClick={this.handleClick} value={true}/><label>Free</label>
+        <input id = "paid-radio" type="radio" name="group1"onClick={this.handleClick} value={false}/><label>Paid</label>
 
   
 
         </form>
-        <input type="text" onChange={this.handleSearch} placeholder="Search events by name..."/>
-        <button onClick={this.handleSubmit}>Search</button>
+        <input id= "search-input" type="text" onChange={this.handleSearch} placeholder="Search events by name..."/>
+        <button id = "search-button" onClick={this.handleSubmit}>Search</button>
+        
+
         <div className = "container">
           <div className="row" style={{padding:"10px"}}>
           {allEvents}
