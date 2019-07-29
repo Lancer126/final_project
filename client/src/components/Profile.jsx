@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Navbarr from './Navbarr';
 
 class Login extends Component {
 
@@ -27,6 +28,7 @@ class Login extends Component {
     let contact_phone = window.sessionStorage.getItem('contact_phone');
     return (
         <div>
+        <Navbarr />
 
 <h3>Name: {name}</h3>
 

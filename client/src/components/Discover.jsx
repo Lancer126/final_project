@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Event from './Event';
+import Navbarr from './Navbarr';
 
 class Discover extends Component {
 
@@ -14,7 +15,9 @@ class Discover extends Component {
       return <Event event={event} key={event.id}/>
     });
     return (
+      
       <div>
+      <Navbarr />
 
         <h3>Discover</h3>
 

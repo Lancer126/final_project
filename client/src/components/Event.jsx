@@ -13,8 +13,8 @@ class Event extends Component {
 
 
 
-        <div className="eventbox">
-          <div>
+        <div>
+          <div className="eventbox">
           <a href={link}>{this.props.event.name.text}</a>
           </div>
           {this.props.event.logo? <img className="eventboximg" src={this.props.event.logo.original.url} /> : null}

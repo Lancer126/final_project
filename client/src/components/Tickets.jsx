@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import Navbarr from './Navbarr';
 
 class Tickets extends Component {
   render() {
     return (
         <div>
+        <Navbarr />
         
 <h2>Event Name</h2>
 <h3>Description</h3>

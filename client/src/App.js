@@ -9,11 +9,9 @@ import Aid from './components/Aid';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import EventDetails from './components/EventDetails';
-import Categories from './components/Categories';
 import EmergencyContacts from './components/EmergencyContacts';
 import Test from './components/test';
 import './App.css';
-import Navbarr from './components/Navbarr';
 
 
 class App extends Component {
@@ -37,11 +35,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbarr events={this.state} />
-
           <Switch>
 
-            <Route exact path='/login' component={Login} />
+            <Route path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
             <Route path='/discover' render={() => <Discover events={this.state.events} />} />
             <Route path='/search' render={() => <Search events={this.state.events} />} />
@@ -52,9 +48,6 @@ class App extends Component {
             <Route path='/event/:id' render={() => <EventDetails events={this.state.events} />} />
             <Route path='/profile' component={Profile} />
             <Route path='/test' render={() => < Test events={this.state.events} />} />
-            
-
-            <Route path='/categories' component={Categories} />
             <Route path='/contacts' component={EmergencyContacts} />
 
           </Switch>

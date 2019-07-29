@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbarr from './Navbarr';
 
 class EventDetails extends Component {
   constructor(props){
@@ -26,6 +27,7 @@ class EventDetails extends Component {
 
       return (
         <div>
+        <Navbarr />
           <h3>{display.name.text}</h3>
           <p>{display.description.text}</p>
           <button>Request Assistances</button>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Event from './Event';
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Search extends Component {
@@ -74,6 +75,7 @@ class Search extends Component {
     });
     return (
       <div>
+      <Navbarr />
         <h3>Price</h3>
         <form>
         <input type="radio" onClick={this.handleClick} value={true}/><label>Free</label>

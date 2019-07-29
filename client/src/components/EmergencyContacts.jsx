@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class EmergencyContacts extends Component {
@@ -33,8 +34,14 @@ class EmergencyContacts extends Component {
   }
 
   render() {
+    let navbar = "";
+    if(window.sessionStorage.getItem('contact_name')) {
+      navbar = <Navbarr />
+    }
+
     return (
       <div>
+      {navbar}
 
 <Formik
     initialValues={{ name: "", phone: "" }}

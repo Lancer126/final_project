@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
 "mdbreact";
+import Navbarr from './Navbarr';
 
 
 const CarouselPage = (props) => {
@@ -8,6 +9,8 @@ const CarouselPage = (props) => {
   const events = props.events;
   
   return (
+    <div>
+    <Navbarr />
     <MDBContainer>
       <MDBCarousel
       activeItem={1}
@@ -39,7 +42,7 @@ const CarouselPage = (props) => {
       </MDBCarouselInner>
     </MDBCarousel>
     </MDBContainer>
-
+    </div>
   );
   
 }

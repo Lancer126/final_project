@@ -1,5 +1,7 @@
 import React from 'react';
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import Navbarr from './Navbarr';
+
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -60,6 +62,9 @@ class GoogleMapsContainer extends React.Component {
 
 
     return (
+      <div>
+
+<Navbarr />
       <Map
         item
         xs={12}
@@ -69,6 +74,7 @@ class GoogleMapsContainer extends React.Component {
         zoom={14}
         initialCenter={{ lat: 45.5274423, lng: -73.59654979999999 }}
       >
+
 
         {/* MARKER CURRENT LOCATION */}
         <Marker
@@ -96,6 +102,7 @@ class GoogleMapsContainer extends React.Component {
           <button>Event Details</button>
         </InfoWindow>
       </Map>
+      </div>
     );
   }
 }
