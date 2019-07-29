@@ -27,7 +27,7 @@ class Navbarr extends React.Component {
   render() {
     let login_profile = "";
     let myevents = "";
-    if(window.sessionStorage.getItem('user_email')) {
+    if (window.sessionStorage.getItem('user_email')) {
       login_profile = <Link to={'/profile'} className="nav-link"> Profile </Link>
       myevents = <Link to={'/myevents'} className="nav-link"> My Events </Link>
     }
@@ -36,25 +36,25 @@ class Navbarr extends React.Component {
     }
 
     return (
-      <Navbar id = "navbarr" light expand="md">
-        <NavbarBrand id = 'titleNav' href="/discover">Eventure</NavbarBrand>
+      <Navbar id="navbarr" light expand="md">
+        <NavbarBrand id='titleNav' href="/discover">Eventure</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto"navbar>
-            <NavItem id = 'menutitle'>
+          <Nav className="ml-auto" navbar>
+            <NavItem id='menutitle'>
 
               <Link to={'/map'} className="nav-link"> Map </Link>
             </NavItem>
-            <NavItem id = 'menutitle'>
+            <NavItem id='menutitle'>
               <Link to={'/discover'} className="nav-link"> Discover </Link>
             </NavItem>
-            <NavItem id = 'menutitle'>
+            <NavItem id='menutitle'>
               <Link to={'/search'} className="nav-link"> Search </Link>
             </NavItem>
-            <NavItem id = 'menutitle'>
+            <NavItem id='menutitle'>
               {myevents}
             </NavItem>
-            <NavItem id = 'menutitle'>
+            <NavItem id='menutitle'>
               {login_profile}
             </NavItem>
 
