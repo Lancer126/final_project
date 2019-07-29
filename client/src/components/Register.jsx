@@ -16,10 +16,9 @@ class Register extends Component {
     };
   }
 
-  componentDidMount() {
-    document.body.classList.remove('loginBg');
-    document.body.classList.add('registerBg');
-  }
+  // componentDidMount() {
+  //   document.body.classList.add('registerBg');
+  // }
 
   // componentDidMount() {
   //   window.FB.getLoginStatus(response => {

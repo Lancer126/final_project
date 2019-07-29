@@ -26,8 +26,10 @@ class Navbarr extends React.Component {
   }
   render() {
     let login_profile = "";
+    let myevents = "";
     if(window.sessionStorage.getItem('user_email')) {
       login_profile = <Link to={'/profile'} className="nav-link"> Profile </Link>
+      myevents = <Link to={'/myevents'} className="nav-link"> My Events </Link>
     }
     else {
       login_profile = <Link to={'/login'} className="nav-link">Login</Link>
@@ -50,10 +52,7 @@ class Navbarr extends React.Component {
               <Link to={'/search'} className="nav-link"> Search </Link>
             </NavItem>
             <NavItem id = 'menutitle'>
-              <Link to={'/tickets'} className="nav-link"> Tickets </Link>
-            </NavItem>
-            <NavItem id = 'menutitle'>
-              <Link to={'/myevents'} className="nav-link"> My Events </Link>
+              {myevents}
             </NavItem>
             <NavItem id = 'menutitle'>
               {login_profile}

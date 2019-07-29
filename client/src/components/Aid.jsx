@@ -11,6 +11,10 @@ class Aid extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+  }
+
   handleChange(event) {
     console.log("test",event.target.value)
     this.setState({value: event.target.value});

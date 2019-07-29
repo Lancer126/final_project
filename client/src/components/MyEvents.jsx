@@ -23,6 +23,8 @@ class MyEvents extends Component {
          .catch(e => {
            console.log(e)
          })
+
+        document.body.classList.remove('loginBg');
   }
 
   render() {

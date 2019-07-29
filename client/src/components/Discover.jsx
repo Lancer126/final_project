@@ -11,6 +11,10 @@ class Discover extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+  }
+
   render() {
     const events = this.props.events;
     const allEvents = events.map((event) => {

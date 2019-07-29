@@ -17,6 +17,10 @@ class Search extends Component {
     }
   }
 
+  componentDidMount() {
+    document.body.classList.remove('loginBg');
+  }
+
   handleClick = (event) => {
     if(event.target.checked){
       console.log(event.target.value)
