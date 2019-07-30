@@ -22,6 +22,7 @@ class Event extends Component {
     .catch(function (error) {
       console.log(error);
     });
+    window.location.replace('/myevents');
   }
   render() {
     const link = '/event/'+this.props.event.id;
