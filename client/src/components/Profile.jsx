@@ -34,16 +34,16 @@ class Login extends Component {
       <div>
       <Navbarr />
       <div className="container profile-box">
-
 <h1 className="text-center">Profile</h1>
 <br/>
   <div className="row justify-content-center">
     <div className="col-md text-left">
     <h1>Info</h1>
 <br/>
-<h3>{name}</h3>
-<h3>{email}</h3>
-<h3>{phone}</h3>
+<img style={{maxHeight:"180px", maxWidth: "auto"}} src='https://vignette.wikia.nocookie.net/to-hollywood-and-beyond/images/e/ec/McLovin_superbad.jpg/revision/latest?cb=20160320024827' />
+<span>Name: {name}</span>
+<span>E-mail: {email}</span>
+<span>Phone number: {phone}</span>
     </div>
     <div className="col-md text-left">
     <h1>Emergency Contact</h1>
@@ -54,29 +54,11 @@ class Login extends Component {
     </div>
   </div>
 <br/>
-<button className="btn edit" onClick={this.onLogout}>Logout</button>
+
+
 </div>
 </div>
 
-
-//         <div>
-//         <Navbarr />
-//         <div className="profile-box">
-// <h1>Profile</h1>
-// <br/>
-// <h3>{name}</h3>
-// <h3>{email}</h3>
-// <h3>{phone}</h3>
-// <br/>
-// <h2>Emergency Contact</h2>
-// <h3>{contact_name}</h3>
-// <h3>{contact_phone}</h3>
-// <Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
-// <br/>
-// <br/>
-// <button onClick={this.onLogout}>Logout</button>
-//         </div>
-//         </div>
     );
   }
 }

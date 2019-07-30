@@ -34,7 +34,7 @@
 #hmebtn{
  font-size: large;
 }
-#titleNav{ 
+#titleNav{
   font-size: xx-large;
   color: white
 }
@@ -145,10 +145,10 @@ padding-top: 0px;
   content: '\A';
   white-space: pre;
 }
-          
+
 .flip-container {
   perspective: 1000px;
-  
+
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -159,7 +159,7 @@ padding-top: 0px;
 	width: 320px;
   height: 320px;
   margin: 15px
-  
+
 }
 
 /* flip speed goes here */
@@ -186,7 +186,7 @@ padding-top: 0px;
 	z-index: 2;
 	/* for firefox 31 */
   transform: rotateY(0deg);
-  
+
 }
 
 /* back, initially hidden pane */
@@ -203,7 +203,7 @@ border: 1px solid #374785;
 margin: 7px 5px;
 box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 border-radius: 2px;
-  
+
 }
 #evntbtn:hover{
   float: right;
@@ -214,7 +214,7 @@ border: 1px solid #374785;
 margin: 7px 5px;
 box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 border-radius: 2px;
-  
+
 }
 
 
@@ -315,9 +315,9 @@ border-radius: 2px;
   font-size: 18px !important;
   cursor: pointer !important;
   margin: 12px 0 !important;
-  
+
 }
-     
+
 .container .carousel-caption{
   right: 0;
   bottom: 0;
@@ -371,7 +371,7 @@ body{
 }
 
 
-   
+
 
 .edit {
   border: 2px solid orange !important;
@@ -399,7 +399,7 @@ body{
   border-radius: 2px;
 }
 #attendevntbtn:hover{
-  
+
   background-color: #374785;
   color: grey;
   padding: 5px 10px;
@@ -408,6 +408,11 @@ body{
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
-   
-            
-       
+
+.profile-box{
+  margin-left: 30%;
+  width: 40%;
+  background-color: yellow;
+}
+
+
