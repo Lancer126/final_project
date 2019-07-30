@@ -15,7 +15,6 @@ class AttendingEvent extends Component {
   }
 
   handleReminder = (event) => {
-    console.log('tits')
     if(this.state.reminder_status===false){
       this.setState({reminder_status: true})
     }
@@ -25,7 +24,6 @@ class AttendingEvent extends Component {
   }
 
   handleAssistance = (event) => {
-
     if(this.state.assistance_status===false){
       this.setState({assistance_status: true})
     }
@@ -59,7 +57,7 @@ class AttendingEvent extends Component {
         {requestBox}
         {reminderBox}
       </div>
-      
+
     );
   }
 }

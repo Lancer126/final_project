@@ -39,7 +39,7 @@ class Event extends Component {
     <h4>{this.props.event.name.text}</h4>
     <span>{moment(this.props.event.start.local).format("MMM Do YY")}</span>
           <p>{this.props.event.summary}...</p>
-          {/* <Link to={link}><button>More Info</button></Link> */}
+          <Link className="nav-link"><button id="evntbtn" onClick={this.handleClick}>Attend</button></Link>
           <Link to={link} className="nav-link"><button id = "evntbtn"> More Info </button></Link>
 		</div>
 	</div>
