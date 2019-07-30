@@ -12,7 +12,6 @@ class Login extends Component {
 
   componentDidMount() {
     document.body.classList.remove('loginBg');
-    document.body.style.background= "linear-gradient(to right, #3a7bd5, #00d2ff)";
   }
 
   onLogout() {
@@ -39,14 +38,14 @@ class Login extends Component {
 <h1 className="text-center">Profile</h1>
 <br/>
   <div className="row justify-content-center">
-    <div className="col-5 text-left">
+    <div className="col-md text-left">
     <h1>Info</h1>
 <br/>
 <h3>{name}</h3>
 <h3>{email}</h3>
 <h3>{phone}</h3>
     </div>
-    <div className="col-5 text-left">
+    <div className="col-md text-left">
     <h1>Emergency Contact</h1>
     <br/>
     <h3>{contact_name}</h3>
