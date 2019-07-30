@@ -117,7 +117,6 @@ router.post('/event', function(req,res,next){
     }
 
     if(value.length === 0){
-      console.log('TITS MCGEE')
 
       knex('events').insert([{
         name: req.body.data.name.text,
@@ -198,11 +197,12 @@ console.log(req.body)
 });
 
 router.post('/posttomessage', (req, res) => {
+
   client.messages
     .create({
       body: req.body.message,
       from: '+15146124974',
-      to: '+15149796909'
+      to: '+15195259581'
     })
     .then(message => console.log(message.sid));
 

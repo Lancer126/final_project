@@ -7,6 +7,22 @@ const moment = require('moment');
 class EventDetails extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      events: this.props.events
+    }
+  }
+
+  handleClick = (event) => {
+    /*console.log(event.target.value);
+    axios.post('/event', {
+      data: this.props.event
+    })
+    .then(function (response) {
+      console.log('response sent: ', response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });*/
   }
 
   render() {
@@ -49,18 +65,18 @@ class EventDetails extends Component {
         </div>
           <div id="eventbuttons">
             <div id="eventspace">
-            
+
           <button className="buttonevent" style={{maxHeight:"75%"}}>Attend</button>
           <button className="buttonevent" style={{maxHeight:"75%"}}>Request Assistances</button>
           <button className="buttonevent" style={{maxHeight:"75%"}}>Set Reminder</button>
-            </div>  
+            </div>
           </div>
-          
+
         <div id="eventinfo" dangerouslySetInnerHTML={{__html:display.description.html}}>
         </div>
         </div>
         </div>
-        </div> 
+        </div>
 
 
 
