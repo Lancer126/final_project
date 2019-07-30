@@ -19,7 +19,7 @@ class Register extends Component {
   render() {
     return (
       <div>
-      <Navbar />
+      <Navbarr />
       <div className="login-box">
 
 <Formik
@@ -51,7 +51,7 @@ class Register extends Component {
         setSubmitting(false);
       }, 500);
     }}
-    
+
     validationSchema={Yup.object().shape({
       email: Yup.string()
         .email()
