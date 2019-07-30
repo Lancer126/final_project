@@ -25,6 +25,7 @@ class MyEvents extends Component {
          })
 
         document.body.classList.remove('loginBg');
+        document.body.style.background= "white";
   }
 
   render() {

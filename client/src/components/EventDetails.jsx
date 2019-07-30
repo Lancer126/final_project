@@ -29,17 +29,19 @@ class EventDetails extends Component {
 
     if(this.props.events.length !== 0 ){
       var url = window.location.href.substring(28)
-      console.log(url);
+      console.log("url:", url);
       var events = this.props.events
-      console.log(this.props);
+      console.log("Events:", this.props.events);
       //console.log(events);
 
       function findEvent(id){
         for(var i = 0; i < events.length; i++){
+          console.log(id)
           if (events[i].id === id){
             return events[i];
           }
         }
+        return events[0]
       }
       var display = findEvent(url)
 

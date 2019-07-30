@@ -19,6 +19,7 @@ class Search extends Component {
 
   componentDidMount() {
     document.body.classList.remove('loginBg');
+    document.body.style.background= "white";
   }
 
   handleClick = (event) => {

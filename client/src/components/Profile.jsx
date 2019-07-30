@@ -12,6 +12,7 @@ class Login extends Component {
 
   componentDidMount() {
     document.body.classList.remove('loginBg');
+    document.body.style.background= "linear-gradient(to right, #3a7bd5, #00d2ff)";
   }
 
   onLogout() {
@@ -31,23 +32,52 @@ class Login extends Component {
     let contact_name = window.sessionStorage.getItem('contact_name');
     let contact_phone = window.sessionStorage.getItem('contact_phone');
     return (
-        <div>
-        <Navbarr />
+      <div>
+      <Navbarr />
+      <div className="container profile-box">
 
-<h3>Name: {name}</h3>
+<h1 className="text-center">Profile</h1>
+<br/>
+  <div className="row justify-content-center">
+    <div className="col-5 text-left">
+    <h1>Info</h1>
+<br/>
+<h3>{name}</h3>
+<h3>{email}</h3>
+<h3>{phone}</h3>
+    </div>
+    <div className="col-5 text-left">
+    <h1>Emergency Contact</h1>
+    <br/>
+    <h3>{contact_name}</h3>
+    <h3>{contact_phone}</h3>
+    <Link to={'/contacts'} className="nav-link"><button className='btn edit'>Edit</button></Link>
+    </div>
+  </div>
+<br/>
+<button className="btn edit" onClick={this.onLogout}>Logout</button>
+</div>
+</div>
 
-<h3>Email: {email}</h3>
-<br/>
-<h2>Emergency Contact</h2>
-<h3>{contact_name}: {contact_phone}</h3>
-<Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
-<br/>
-<h3>Phone: {phone}</h3>
-<h4>Check-in</h4>
-<br/>
-<button onClick={this.onLogout}>Logout</button>
 
-        </div>
+//         <div>
+//         <Navbarr />
+//         <div className="profile-box">
+// <h1>Profile</h1>
+// <br/>
+// <h3>{name}</h3>
+// <h3>{email}</h3>
+// <h3>{phone}</h3>
+// <br/>
+// <h2>Emergency Contact</h2>
+// <h3>{contact_name}</h3>
+// <h3>{contact_phone}</h3>
+// <Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
+// <br/>
+// <br/>
+// <button onClick={this.onLogout}>Logout</button>
+//         </div>
+//         </div>
     );
   }
 }
