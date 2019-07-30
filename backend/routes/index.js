@@ -185,6 +185,13 @@ console.log(req.body)
     twiml.message('ok, have a great time');
   } else if (req.body.Body == 'yes') {
     twiml.message('Were on it');
+    client.messages
+    .create({
+      body: "Harrison needs help call in the army!",
+      from: '+15146124974',
+      to: '+14387778885'
+    })
+    .then(message => console.log(message.sid));
   } else {
     twiml.message(
       'No Body param match, Twilio sends this in the request to your server.'
