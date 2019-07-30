@@ -69,8 +69,7 @@ class EventDetails extends Component {
             <div id="eventspace">
 
           <button className="buttonevent" style={{maxHeight:"75%"}}>Attend</button>
-          <button className="buttonevent" style={{maxHeight:"75%"}}>Request Assistances</button>
-          <button className="buttonevent" style={{maxHeight:"75%"}}>Set Reminder</button>
+
             </div>
           </div>
 
