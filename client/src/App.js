@@ -12,7 +12,6 @@ import EventDetails from './components/EventDetails';
 import EmergencyContacts from './components/EmergencyContacts';
 import Test from './components/carousel';
 import './App.css';
-import Navbarr from './components/Navbarr';
 import MyEvents from './components/MyEvents'
 
 

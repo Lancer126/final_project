@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { kStringMaxLength } from 'buffer';
 import { Formik } from "formik";
 import * as Yup from "yup";
-import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Login extends Component {

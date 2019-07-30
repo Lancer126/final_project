@@ -16,24 +16,6 @@ class Register extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   document.body.classList.add('registerBg');
-  // }
-
-  // componentDidMount() {
-  //   window.FB.getLoginStatus(response => {
-  //       if (response.status === 'connected') {
-  //         window.FB.api('/me', response => {
-  //           this.setState({
-  //             name: response.name,
-  //             email: response.email,
-  //             phone: response.phone
-  //           });
-  //         })
-  //       }
-  //     });
-  // }
-
   render() {
     return (
       <div className="login-box">

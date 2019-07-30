@@ -15,6 +15,7 @@ class GoogleMapsContainer extends React.Component {
 
   componentDidMount() {
     document.body.classList.remove('loginBg');
+    document.body.style.background= "white";
   }
 
   handleToggleOpen = (event) => {

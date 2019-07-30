@@ -27,11 +27,10 @@ class EmergencyContacts extends Component {
 
     return (
       <div>
-      {navbar}
       <div className="login-box">
 
 <Formik
-    initialValues={{ user_name: "", name: "", phone: "" }}
+    initialValues={{ user_name: window.sessionStorage.getItem('user_name') ? window.sessionStorage.getItem('user_name') : "", name: "", phone: "" }}
     onSubmit={(values, { setSubmitting }) => {
 
       this.setState({

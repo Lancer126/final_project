@@ -128,25 +128,37 @@ padding-top: 5px;
   margin: 0 !important;
   padding: 0 !important;
   font-family: sans-serif !important;
-  background: url("./music.jpg") no-repeat !important;
-  background-size: cover !important;
-}
-
-.registerBg {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-family: sans-serif !important;
-  background: url("./bg.png") no-repeat !important;
+  background: url("https://www.dhresource.com/0x0s/f2-albu-g4-M00-53-CB-rBVaEFnGXmeAPcY0AACqBgXIt4Y985.jpg/gradient-blue-color-photography-backdrops.jpg") no-repeat !important;
   background-size: cover !important;
 }
 
 .login-box{
-  width: 280px !important;
+  width: 300px !important;
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   color: white !important;
+}
+
+.profile-box{
+  margin-top: 50px;
+  color: white !important;
+}
+
+.profile-box h1 {
+  float: center !important;
+  font-size: 40px !important;
+  margin-bottom: 20px !important;
+}
+
+.profile-info {
+  width: 100% !important;
+  overflow: hidden !important;
+  font-size: 20px !important;
+  padding: 8px 0 !important;
+  margin: 8px 0 !important;
+  border-bottom: 1px solid #4caf50 !important;
 }
 
 .login-box h1 {
@@ -193,6 +205,11 @@ padding-top: 5px;
   cursor: pointer !important;
   margin: 12px 0 !important;
   
+}
+
+.edit {
+  border: 2px solid #374785 !important;
+  background-color: #374785 !important;
 }
           
             
