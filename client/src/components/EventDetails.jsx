@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbarr from './Navbarr';
+const axios = require('axios');
 
 
 const moment = require('moment');
@@ -7,22 +8,24 @@ const moment = require('moment');
 class EventDetails extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      events: this.props.events
-    }
+
   }
 
   handleClick = (event) => {
-    /*console.log(event.target.value);
+    var e = this.props.events.find(function(element) {
+                return element.id == window.location.href.substring(28);
+            })
+    console.log(event.target.value);
     axios.post('/event', {
-      data: this.props.event
+      data: e
     })
     .then(function (response) {
       console.log('response sent: ', response);
     })
     .catch(function (error) {
       console.log(error);
-    });*/
+    });
+    window.location.replace('/myevents');
   }
 
   render() {
@@ -68,7 +71,7 @@ class EventDetails extends Component {
           <div id="eventbuttons">
             <div id="eventspace">
 
-          <button className="buttonevent" style={{maxHeight:"75%"}}>Attend</button>
+          <button className="buttonevent" style={{maxHeight:"75%"}} onClick={this.handleClick}>Attend</button>
 
             </div>
           </div>

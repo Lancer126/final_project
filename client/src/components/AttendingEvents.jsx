@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Reminder from './Reminder';
 import Assistance from './Assistance';
 import EventDetails from './EventDetails';
+const axios = require('axios');
+
 
 const moment = require('moment');
 
@@ -32,6 +34,20 @@ class AttendingEvent extends Component {
     }
   }
 
+  handleDelete = (event) => {
+
+    axios.post('/event/delete', {
+      data: this.props.event.id
+    })
+    .then(function (response) {
+      console.log('response sent: ', response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    window.location.replace('/myevents');
+  }
 
   render() {
 
@@ -48,12 +64,13 @@ class AttendingEvent extends Component {
     return(
       <div class="container" id="myeventscomp">
         <h3>{this.props.event.name}</h3>
-        
+
         {moment(this.props.event.start_time).format("MMM Do YY")}
         <br></br>
         <button id ="attendevntbtn" onClick={this.handleAssistance}>Request Assistance</button>
         <button id ="attendevntbtn" onClick={this.handleReminder}>Set Reminder</button>
-       
+        <button id ="attendevntbtn" onClick={this.handleDelete}>Delete</button>
+
         {requestBox}
         {reminderBox}
       </div>

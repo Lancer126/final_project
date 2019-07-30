@@ -103,6 +103,18 @@ router.get('/event', function (req, res, next) {
     })
 });
 
+router.post('/event/delete', function(req,res,next){
+  res.json({mclovin:'lovin'})
+  console.log(req.body.data);
+  knex('attendees')
+  .where({'id': req.body.data})
+  .del()
+  .then(res => console.log('EVENTS DELETED: ',res))
+  .catch(e => console.log(e))
+})
+
+
+
 router.post('/event', function(req,res,next){
   res.json({mclovin:'lovin'})
 
