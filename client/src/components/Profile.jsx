@@ -54,7 +54,7 @@ class Login extends Component {
     </div>
   </div>
 <br/>
-<button className="btn edit" onClick={this.onLogout}>Logout</button>
+<button className="btn" onClick={this.onLogout}>Logout</button>
 </div>
 </div>
 
