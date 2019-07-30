@@ -68,22 +68,31 @@ padding-top: 0px;
 }
 
 .buttonevent{
-  background-color: #374785;
-  color: white;
+
   padding: 5px 10px;
-  border: 1px solid #374785;
+  border: 1px solid black;
+  margin: 7px 5px;
+  
+  border-radius: 2px;
+}
+.buttonevent:hover{
+ 
+
+  padding: 5px 10px;
+  border: 1px solid black;
   margin: 7px 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
-.buttonevent:hover{
-  background-color: #374785;
-  color: grey;
-  padding: 5px 10px;
-  border: 1px solid #374785;
-  margin: 7px 5px;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
+
+.button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
 }
 
 
@@ -195,26 +204,19 @@ padding-top: 0px;
 }
 
 #evntbtn{
-  float: right;
-  background-color: #374785;
-color: white;
-padding: 5px 10px;
-border: 1px solid #374785;
-margin: 7px 5px;
-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-border-radius: 2px;
+
+  padding: 5px 10px;
+  border: 1px solid black;
+  margin: 7px 5px;
   
+  border-radius: 2px;
 }
 #evntbtn:hover{
-  float: right;
-  background-color: #374785;
-color: grey;
-padding: 5px 10px;
-border: 1px solid #374785;
-margin: 7px 5px;
-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-border-radius: 2px;
-  
+  padding: 5px 10px;
+  border: 1px solid black;
+  margin: 7px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
 }
 
 
@@ -306,17 +308,24 @@ border-radius: 2px;
   margin: 0 10px !important;
 }
 
-.btn {
-  width: 100% !important;
-  background: none !important;
-  border: 2px solid #4ca3af !important;
-  color: black !important;
-  padding: 5px !important;
-  font-size: 18px !important;
-  cursor: pointer !important;
-  margin: 12px 0 !important;
+.btn{
+color: black !important;
+  padding: 5px 10px;
+  border: 1px solid black !important;
+  margin: 7px 5px !important;
   
+  border-radius: 2px !important;
 }
+.btn :hover{
+ 
+
+  padding: 5px 10px !important;
+  border: 1px solid black !important;
+  margin: 7px 5px !important;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 2px !important;
+}
+
      
 .container .carousel-caption{
   right: 0;
@@ -345,7 +354,6 @@ body{
 }
 
 .searchTerm {
-  border: 3px solid #87CEFA;
   border-right: none;
   padding: 5px;
   height: 36px;
@@ -358,25 +366,12 @@ body{
   color:black;
 }
 
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #87CEFA;
-  background: #87CEFA;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
+
 
 
    
 
-.edit {
-  border: 2px solid orange !important;
-  background-color: orange !important;
-}
+
 
 #myeventscomp{
   border-style: groove;
@@ -388,26 +383,28 @@ body{
     text-align: center;
 }
 
+
+
+
 #attendevntbtn{
 
-  background-color: #374785;
-  color: white;
   padding: 5px 10px;
-  border: 1px solid #374785;
+  border: 1px solid black;
   margin: 7px 5px;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  
   border-radius: 2px;
 }
 #attendevntbtn:hover{
-  
-  background-color: #374785;
-  color: grey;
+ 
+
   padding: 5px 10px;
-  border: 1px solid #374785;
+  border: 1px solid black;
   margin: 7px 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
    
-            
+#searchbtns{
+  display: flex;
+}          
        
