@@ -87,21 +87,29 @@ class Search extends Component {
       <Navbarr />
 
       <div className="container" style={{textAlign: 'center'}}>
-       <h4 id = "search-title">Search Eventure</h4>
-        <h3>Price</h3>
-        <form>
-        <input id = "free-radio" type="radio" name="group1" onClick={this.handleClick} value={true}/><label>Free</label>
-        <input id = "paid-radio" type="radio" name="group1"onClick={this.handleClick} value={false}/><label>Paid</label>
-
-  
-
-        </form>
-        <input id= "search-input" type="text" onChange={this.handleSearch} placeholder="Search events by name..."/>
-        <button id = "search-button" onClick={this.handleSubmit}>Search</button>
+       <h5 id = "search-title">Filter Results</h5>
         
+        <form>
+        <div class="control">
+        <input id = "free-radio" style={{margin: '5px'}}type="radio" name="group1" onClick={this.handleClick} value={true}/><label class="radio">Free</label>
+        <input id = "paid-radio" style={{margin: '5px'}}type="radio" name="group1"onClick={this.handleClick} value={false}/><label class="radio">Paid</label>
+        </div>
+        </form>
 
+        <div className="wrap">
+          <div className="search">
+        <input type="text" class="searchTerm" onChange={this.handleSearch} placeholder="Search events by name..."/>
+
+        <button type="submit" className="searchButton" onClick={this.handleSubmit}><i className="fa fa-search"></i></button>
+        </div>
+        </div>
+    
+
+
+        
         <div className = "container">
           <div className="row" style={{padding:"10px"}}>
+        
           {allEvents}
         </div>
         </div>

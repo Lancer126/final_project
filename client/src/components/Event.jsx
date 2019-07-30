@@ -3,7 +3,7 @@ import EventDetails from './EventDetails';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const axios = require('axios');
 
-
+const moment = require('moment');
 
 class Event extends Component {
 
@@ -37,7 +37,7 @@ class Event extends Component {
 		</div>
 		<div class="back">
     <h4>{this.props.event.name.text}</h4>
-    <span>{this.props.event.start.local}</span>
+    <span>{moment(this.props.event.start.local).format("MMM Do YY")}</span>
           <p>{this.props.event.summary}...</p>
           {/* <Link to={link}><button>More Info</button></Link> */}
           <Link to={link} className="nav-link"><button id = "evntbtn"> More Info </button></Link>
