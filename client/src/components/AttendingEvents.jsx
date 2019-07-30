@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reminder from './Reminder';
 import Assistance from './Assistance';
+import EventDetails from './EventDetails';
 
 const moment = require('moment');
 
@@ -47,11 +48,14 @@ class AttendingEvent extends Component {
     }
 
     return(
-      <div>
+      <div class="container" id="myeventscomp">
         <h3>{this.props.event.name}</h3>
+        
         {moment(this.props.event.start_time).format("MMM Do YY")}
-        <button onClick={this.handleAssistance}>Request Assistance</button>
-        <button onClick={this.handleReminder}>Set Reminder</button>
+        <br></br>
+        <button id ="attendevntbtn" onClick={this.handleAssistance}>Request Assistance</button>
+        <button id ="attendevntbtn" onClick={this.handleReminder}>Set Reminder</button>
+       
         {requestBox}
         {reminderBox}
       </div>

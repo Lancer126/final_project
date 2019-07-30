@@ -37,7 +37,7 @@ class MyEvents extends Component {
     return(
       <div>
         <Navbarr />
-        <h2>My Events </h2>
+        <h2 style={{padding: "20px"}}>Attending Events</h2>
         {attendingEvents}
 
       </div>

@@ -76,6 +76,17 @@ padding-top: 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
+.buttonevent:hover{
+  background-color: #374785;
+  color: grey;
+  padding: 5px 10px;
+  border: 1px solid #374785;
+  margin: 7px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+
 
 .eventdetails{
   display: block;
@@ -173,7 +184,27 @@ padding-top: 5px;
 
 #evntbtn{
   float: right;
+  background-color: #374785;
+color: white;
+padding: 5px 10px;
+border: 1px solid #374785;
+margin: 7px 5px;
+box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+border-radius: 2px;
+  
 }
+#evntbtn:hover{
+  float: right;
+  background-color: #374785;
+color: grey;
+padding: 5px 10px;
+border: 1px solid #374785;
+margin: 7px 5px;
+box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+border-radius: 2px;
+  
+}
+
 
 #mrenfo{
   float: right;
@@ -333,6 +364,37 @@ body{
   border: 2px solid #374785 !important;
   background-color: #374785 !important;
 }
-          
+
+#myeventscomp{
+  border-style: groove;
+    text-align: center;
+}
+
+#myeventscomp:hover{
+  border-style: double;
+    text-align: center;
+}
+
+#attendevntbtn{
+
+  background-color: #374785;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid #374785;
+  margin: 7px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+#attendevntbtn:hover{
+  
+  background-color: #374785;
+  color: grey;
+  padding: 5px 10px;
+  border: 1px solid #374785;
+  margin: 7px 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+   
             
        
