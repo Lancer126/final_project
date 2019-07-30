@@ -14,14 +14,6 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    document.body.classList.add('loginBg');
-  }
-
-  componentWillDismount() {
-    document.body.classList.remove('loginBg');
-  }
-
   render() {
     return (
       <div className="login-box">
@@ -127,7 +119,7 @@ class Login extends Component {
           data-auto-logout-link="true"
           data-use-continue-as="true"
         ></div> */}
-        Not already a user?<Link to={'/register'} className="nav-link">Register</Link>
+        <Link to={'/register'} className="nav-link text-center" style={{ color: "black" }}>Not a user? Register HERE</Link>
 
       </div>
     );

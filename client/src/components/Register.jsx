@@ -137,28 +137,8 @@ class Register extends Component {
     }}
   </Formik>
 
-        {/* <form onSubmit={this.handleSubmit}>
-        <label>
-          Email
-          <input type="text" name="email" value={this.state.email} onChange={this.handleEmail} placeholder="email@email.com"/>
-        </label>
-        <label>
-          Password
-          <input type="text" value={this.state.password} onChange={this.handlePassword} name="password" placeholder="plz not 1234"/>
-        </label>
-        <label>
-          Phone
-          <input type="text" name="phone" value={this.state.phone} onChange={this.handlePhone} placeholder="4387778885"/>
-        </label>
-        <label>
-          Name
-          <input type="text" name="name" value={this.state.name} onChange={this.handleName} placeholder="Tits McGee"/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form> */}
-
         <br/>
-        Already a user? <Link to={'/login'} className="nav-link">Login</Link>
+        <Link to={'/login'} className="nav-link text-center" style={{color: "black"}}>Already a user?  Login HERE</Link>
 
       </div>
     );

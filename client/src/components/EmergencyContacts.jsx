@@ -137,8 +137,7 @@ class EmergencyContacts extends Component {
     }}
   </Formik>
       <br/>
-      <h6>This is a placeholder paragraph.</h6>
-      Yeah.
+      <h6>By providing an emergency contact, you allow us to alert them whenever we feel you are no longer safe.</h6>
       </div>
       </div>
     );
