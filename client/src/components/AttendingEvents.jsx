@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Reminder from './Reminder';
 import Assistance from './Assistance';
 
+const moment = require('moment');
+
 class AttendingEvent extends Component {
   constructor(props) {
     super(props);
@@ -47,12 +49,13 @@ class AttendingEvent extends Component {
     return(
       <div>
         <h3>{this.props.event.name}</h3>
-        {this.props.event.start_time}
+        {moment(this.props.event.start_time).format("MMM Do YY")}
         <button onClick={this.handleAssistance}>Request Assistance</button>
         <button onClick={this.handleReminder}>Set Reminder</button>
         {requestBox}
         {reminderBox}
       </div>
+      
     );
   }
 }
