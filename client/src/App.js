@@ -13,6 +13,7 @@ import EmergencyContacts from './components/EmergencyContacts';
 import Test from './components/carousel';
 import './App.css';
 import MyEvents from './components/MyEvents'
+import Homepage from './components/newhomepage'
 
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
             <Route path='/test' render={() => < Test events={this.state.events} />} />
             <Route path='/myevents' component={MyEvents} />
             <Route path='/contacts' component={EmergencyContacts} />
+            <Route path='/new' render={() => <Homepage events={this.state.events} />} />
 
           </Switch>
         </div>
