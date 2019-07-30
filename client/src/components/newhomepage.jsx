@@ -15,7 +15,8 @@ class Homepage extends Component {
       price: 10,
       start_date: 69,
       end_date: 10,
-      events: this.props.events
+      events: this.props.events,
+      carousel_events: this.props.events
     }
   }
 
@@ -76,10 +77,10 @@ class Homepage extends Component {
   }
 
   render() {
-    const events = this.props.events;
+    //const carousel = this.state.carousel_events;
 
     console.log(this.state.events)
-    var allEvents = events.map((event) => {
+    var allEvents = this.state.events.map((event) => {
       return (
         <div className="col-md-4">
       <Event event={event} key={event.id}/>
@@ -90,11 +91,11 @@ class Homepage extends Component {
     return (
       <div>
       <Navbarr />
-      <CarouselPage events={events}/>
+      <CarouselPage events={this.state.carousel_events}/>
 
       <div className="container" style={{textAlign: 'center'}}>
        <h5 id = "search-title">Filter Results</h5>
-        
+
         <form>
         <div class="control">
         <input id = "free-radio" style={{margin: '5px'}}type="radio" name="group1" onClick={this.handleClick} value={true}/><label class="radio">Free</label>
@@ -109,13 +110,13 @@ class Homepage extends Component {
         <button type="submit" className="searchButton" onClick={this.handleSubmit}><i className="fa fa-search"></i></button>
         </div>
         </div>
-    
 
 
-        
+
+
         <div className = "container">
           <div className="row" style={{padding:"10px"}}>
-        
+
           {allEvents}
         </div>
         </div>
