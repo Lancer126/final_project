@@ -20,13 +20,10 @@ class EmergencyContacts extends Component {
   }
 
   render() {
-    let navbar = "";
-    if(window.sessionStorage.getItem('contact_name')) {
-      navbar = <Navbarr />
-    }
 
     return (
       <div>
+      <Navbarr />
       <div className="login-box">
 
 <Formik

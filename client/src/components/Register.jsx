@@ -18,6 +18,8 @@ class Register extends Component {
 
   render() {
     return (
+      <div>
+      <Navbar />
       <div className="login-box">
 
 <Formik
@@ -116,19 +118,6 @@ class Register extends Component {
           {errors.phone && touched.phone && (
             <div className="input-feedback">{errors.phone}</div>
           )}
-          {/* <i className="fa fa-lock" aria-hidden="true"></i> */}
-        {/* <input
-          type="text"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Enter your name"
-          className="textbox"
-        />
-          {errors.name && touched.name && (
-            <div className="input-feedback">{errors.name}</div>
-          )} */}
           <button className="btn" type="submit" disabled={isSubmitting}>
             Register
           </button>
@@ -139,7 +128,7 @@ class Register extends Component {
 
         <br/>
         <Link to={'/login'} className="nav-link text-center" style={{color: "black"}}>Already a user?  Login HERE</Link>
-
+      </div>
       </div>
     );
   }

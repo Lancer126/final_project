@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { kStringMaxLength } from 'buffer';
 import { Formik } from "formik";
 import * as Yup from "yup";
+import Navbarr from './Navbarr';
 const axios = require('axios');
 
 class Login extends Component {
@@ -16,6 +17,8 @@ class Login extends Component {
 
   render() {
     return (
+      <div>
+      <Navbarr />
       <div className="login-box">
 
   <Formik
@@ -111,16 +114,8 @@ class Login extends Component {
     }}
   </Formik>
         <br/>
-
-        {/* <div className="fb-login-button"
-          data-width=""
-          data-size="large"
-          data-button-type="continue_with"
-          data-auto-logout-link="true"
-          data-use-continue-as="true"
-        ></div> */}
         <Link to={'/register'} className="nav-link text-center" style={{ color: "black" }}>Not a user? Register HERE</Link>
-
+      </div>
       </div>
     );
   }
