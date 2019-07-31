@@ -41,7 +41,7 @@ class Login extends Component {
       <br></br>
       <span className='field'>Phone Number: </span> <span>{phone}</span>
       <section className='sicko'>
-      <h3 className='profile-header-e'>Emergency Contact</h3> <a href='/contacts'>Edit</a>
+      <h3 className='profile-header-e'>Emergency Contact</h3> <a id = "edit-btn" href='/contacts'>Edit</a>
       </section>
       <span className='field'>Emergency Contact Name: </span> <span>{contact_name}</span>
       <br></br>

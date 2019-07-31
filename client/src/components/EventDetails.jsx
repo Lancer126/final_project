@@ -62,10 +62,10 @@ class EventDetails extends Component {
           <img src={display.logo? display.logo.original.url:null} style={{height:"100%",width:"100%"}}/>
           </div>
           <div id="detailsinfo" >
-          <span className="whitespace">{moment(display.start.local).format("MMM Do YY")}</span>
-          <h5 className="whitespace">{display.name.text}</h5>
-          <span className="whitespace">{display.venue.name}</span>
-          <span className="whitespace">{display.venue.address.address_1}</span>
+          <h5 className="whitespace" style= {{padding: "10px"}}>{display.name.text}</h5>
+          <span className="whitespace" style= {{padding: "10px"}}>{moment(display.start.local).format("MMM Do YY")}</span>
+          <span className="whitespace" style= {{padding: "10px"}}>{display.venue.name}</span>
+          <span className="whitespace"style= {{padding: "10px"}}>{display.venue.address.address_1}</span>
           </div>
         </div>
           <div id="eventbuttons">
