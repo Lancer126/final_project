@@ -12,7 +12,6 @@ class Event extends Component {
   }
 
   handleClick = (event) => {
-    console.log(event.target.value);
     axios.post('/event', {
       data: this.props.event
     })

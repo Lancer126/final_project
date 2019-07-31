@@ -23,40 +23,34 @@ class Homepage extends Component {
   componentDidMount() {
     document.body.classList.remove('loginBg');
     document.body.style.background= "white";
-    
+
   }
 
   handleClick = (event) => {
     if(event.target.checked){
-      console.log(event.target.value)
       this.setState({free: event.target.value})
 
     }
   }
 
   handleStartDate = (event) => {
-    console.log(event.target.value);
     this.setState({start_date: event.target.value});
   }
 
   handleEndDate = (event) => {
-    console.log(event.target.value);
     this.setState({end_date: event.target.value});
   }
 
   handleInput = (event) => {
     if(event.key === 'Enter'){
-      console.log(event.target.value);
       this.setState({price: event.target.value});
     }
 
   }
 
   handleSubmit = (event) => {
-      //console.log('status is: ', this.state.free)
       const allEvents = this.props.events.filter(item=>item.is_free.toString() === this.state.free);
 
-      console.log(allEvents);
       this.setState({events: allEvents});
 
       /*axios.post('/event', {
@@ -73,14 +67,12 @@ class Homepage extends Component {
   handleSearch = (event) => {
       const allEvents = this.props.events.filter(item=>item.name.text.toLowerCase().includes(event.target.value.toLowerCase()) );
 
-      console.log(allEvents);
       this.setState({events: allEvents});
   }
 
   render() {
     //const carousel = this.state.carousel_events;
 
-    console.log(this.state.events)
     var allEvents = this.state.events.map((event) => {
       return (
         <div className="col-md-4">

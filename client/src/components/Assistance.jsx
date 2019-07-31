@@ -13,12 +13,10 @@ class Assistance extends Component {
   }
 
   handleChange(event) {
-    console.log("test",event.target.value)
     this.setState({message: event.target.value});
   }
 
   handleSubmit(event) {
-    console.log('clicked');
     event.preventDefault();
     axios.post('/posttomessage', {
       message: this.state.message

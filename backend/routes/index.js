@@ -35,21 +35,18 @@ async function emailChecker(email) {
 //Checks if the password matches
 async function passwordChecker(email, password) {
   const res = await knex("users").where('email', email);
-  console.log("Res:", res)
   if (res.length === 0) {
     return false;
   }
   else {
-    console.log(res[0].password)
-    console.log(password)
     return res[0].password === password;
   }
 }
 
 
 function searchEvents() {
-  console.log("timenow", newDate)
-  console.log("time15", next)
+  //console.log("timenow", newDate)
+  //console.log("time15", next)
   knex("events")
   .select('start_time')
   .then((allTimes)=>{
@@ -105,7 +102,6 @@ router.get('/event', function (req, res, next) {
 
 router.post('/event/delete', function(req,res,next){
   res.json({mclovin:'lovin'})
-  console.log(req.body.data);
   knex('attendees')
   .where({'id': req.body.data})
   .del()
@@ -121,7 +117,7 @@ router.post('/event', function(req,res,next){
 
 
   knex.select('id','name').from('events').where({name: req.body.data.name.text}).then(value => {
-    console.log('RESULT IS: ', value)
+
     var eventID = 0;
 
     if(value.length !== 0){
@@ -159,7 +155,7 @@ router.post('/event', function(req,res,next){
       }
 
       if(found===false){
-        //console.log('prestige worldwide', eventID)
+
         knex('attendees').insert([{
               user_id: 1,
               event_id: eventID
@@ -191,9 +187,8 @@ router.post('/sms', (req, res) => {
   let eventMessage = req.body.Body
   const twiml = new MessagingResponse();
 
-console.log(req.body)
+
   if (req.body.Body == 'no') {
-    console.log('test')
     twiml.message('ok, have a great time');
   } else if (req.body.Body == 'yes') {
     twiml.message('Were on it');
@@ -228,7 +223,7 @@ router.post('/posttomessage', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  console.log("Register")
+
   knex('users')
   .where({'email': req.body.user.email})
   .then(result => {
