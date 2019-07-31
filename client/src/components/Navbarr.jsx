@@ -31,7 +31,7 @@ class Navbarr extends React.Component {
     window.sessionStorage.setItem('user_name', "");
     window.sessionStorage.setItem('contact_name', "");
     window.sessionStorage.setItem('contact_phone', "");
-    window.location.replace('/discover');
+    window.location.replace('/new');
   }
 
   render() {
@@ -49,7 +49,7 @@ class Navbarr extends React.Component {
 
     return (
       <Navbar id="navbarr" light expand="md">
-        <NavbarBrand id='titleNav' href="/discover">Eventure</NavbarBrand>
+        <NavbarBrand id='titleNav' href="/new">Eventure</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -58,10 +58,7 @@ class Navbarr extends React.Component {
               <Link to={'/map'} className="nav-link"> Map </Link>
             </NavItem>
             <NavItem id='menutitle'>
-              <Link to={'/discover'} className="nav-link"> Discover </Link>
-            </NavItem>
-            <NavItem id='menutitle'>
-              <Link to={'/search'} className="nav-link"> Search </Link>
+              <Link to={'/new'} className="nav-link"> Discover </Link>
             </NavItem>
             <NavItem id='menutitle'>
               {myevents}

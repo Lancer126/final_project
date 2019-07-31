@@ -72,11 +72,11 @@ padding-top: 0px;
   padding: 5px 10px;
   border: 1px solid black;
   margin: 7px 5px;
-  
+
   border-radius: 2px;
 }
 .buttonevent:hover{
- 
+
 
   padding: 5px 10px;
   border: 1px solid black;
@@ -208,7 +208,7 @@ padding-top: 0px;
   padding: 5px 10px;
   border: 1px solid black;
   margin: 7px 5px;
-  
+
   border-radius: 2px;
 }
 #evntbtn:hover{
@@ -277,7 +277,7 @@ padding-top: 0px;
 .login-box h1 {
   float: left !important;
   font-size: 40px !important;
-  border-bottom: 6px solid #4ca3af !important;
+  border-bottom: 6px solid #232f3e !important;
   margin-bottom: 50px !important;
   padding: 13px 0 !important;
 }
@@ -288,7 +288,7 @@ padding-top: 0px;
   font-size: 20px !important;
   padding: 8px 0 !important;
   margin: 8px 0 !important;
-  border-bottom: 1px solid #4ca3af !important;
+  border-bottom: 1px solid #232f3e !important;
 }
 
 .textbox i {
@@ -313,11 +313,11 @@ color: black !important;
   padding: 5px 10px;
   border: 1px solid black !important;
   margin: 7px 5px !important;
-  
+
   border-radius: 2px !important;
 }
 .btn :hover{
- 
+
 
   padding: 5px 10px !important;
   border: 1px solid black !important;
@@ -326,7 +326,7 @@ color: black !important;
   border-radius: 2px !important;
 }
 
-     
+
 .container .carousel-caption{
   right: 0;
   bottom: 0;
@@ -391,7 +391,7 @@ body{
   padding: 5px 10px;
   border: 1px solid black;
   margin: 7px 5px;
-  
+
   border-radius: 2px;
 }
 #attendevntbtn:hover{
@@ -405,15 +405,15 @@ body{
   border-radius: 2px;
 }
 
-   
+
 #searchbtns{
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 5px;
   left: 15%;
-}          
-       
+}
+
 
 
 .profile-card{

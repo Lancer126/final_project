@@ -29,7 +29,7 @@ class Login extends Component {
         email: values.email,
         password: values.password
       })
-      
+
       window.event.preventDefault();
 
       setTimeout(() => {
@@ -49,16 +49,16 @@ class Login extends Component {
             window.sessionStorage.setItem("user_phone", user.phone);
             window.sessionStorage.setItem("contact_name", user.contact_name);
             window.sessionStorage.setItem("contact_phone", user.contact_phone);
-            window.location.replace('/discover');
+            window.location.replace('/new');
           })
           .catch(e => {
             console.log(e)
           })
       }
       , 500);
-      
+
     }}
-    
+
     validationSchema={Yup.object().shape({
       email: Yup.string()
         .email()
