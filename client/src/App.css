@@ -34,7 +34,7 @@
 #hmebtn{
  font-size: large;
 }
-#titleNav{ 
+#titleNav{
   font-size: xx-large;
   color: white
 }
@@ -154,10 +154,10 @@ padding-top: 0px;
   content: '\A';
   white-space: pre;
 }
-          
+
 .flip-container {
   perspective: 1000px;
-  
+
 }
 	/* flip the pane when hovered */
 	.flip-container:hover .flipper, .flip-container.hover .flipper {
@@ -168,7 +168,7 @@ padding-top: 0px;
 	width: 320px;
   height: 320px;
   margin: 15px
-  
+
 }
 
 /* flip speed goes here */
@@ -195,7 +195,7 @@ padding-top: 0px;
 	z-index: 2;
 	/* for firefox 31 */
   transform: rotateY(0deg);
-  
+
 }
 
 /* back, initially hidden pane */
@@ -369,7 +369,7 @@ body{
 
 
 
-   
+
 
 
 
@@ -395,14 +395,16 @@ body{
   border-radius: 2px;
 }
 #attendevntbtn:hover{
- 
 
+  background-color: #374785;
+  color: grey;
   padding: 5px 10px;
   border: 1px solid black;
   margin: 7px 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
+
    
 #searchbtns{
   display: flex;
@@ -412,3 +414,56 @@ body{
   left: 15%;
 }          
        
+
+
+.profile-card{
+  margin-left: 25%;
+  width: 50%;
+  background-color: #232f3e;
+  padding: 25px;
+  padding-bottom: 80px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 14px 1px #949494;
+}
+
+.pfp{
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 40px;
+}
+
+.field{
+  font-weight: bold;
+  color: white;
+  margin-left: 25px;
+  padding: 2px;
+}
+
+.profile-header{
+
+  margin-left: 15px;
+  margin-top: 20px;
+  font-size: 16pt;
+}
+
+.profile-header-e{
+  display: inline;
+  margin-left: 15px;
+  font-size: 16pt;
+}
+
+.profile-name{
+  font-weight: bold;
+  text-align: center;
+}
+
+.sicko{
+  margin-top: 50px
+}
+
+

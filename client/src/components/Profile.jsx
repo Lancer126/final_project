@@ -33,50 +33,25 @@ class Login extends Component {
     return (
       <div>
       <Navbarr />
-      <div className="container profile-box">
-
-<h1 className="text-center">Profile</h1>
-<br/>
-  <div className="row justify-content-center">
-    <div className="col-md text-left">
-    <h1>Info</h1>
-<br/>
-<h3>{name}</h3>
-<h3>{email}</h3>
-<h3>{phone}</h3>
-    </div>
-    <div className="col-md text-left">
-    <h1>Emergency Contact</h1>
-    <br/>
-    <h3>{contact_name}</h3>
-    <h3>{contact_phone}</h3>
-    <Link to={'/contacts'} className="nav-link"><button className='btn edit'>Edit</button></Link>
-    </div>
-  </div>
-<br/>
-<button className="btn" onClick={this.onLogout}>Logout</button>
-</div>
-</div>
+      <section className="profile-card">
+      <img className="pfp" src="https://blogtimenow.com/wp-content/uploads/2014/06/hide-facebook-profile-picture-notification.jpg" width="80px" height="80px"/>
+      <h2 className='profile-name'>{name}</h2>
+      <h3 className='profile-header'>Basic Info</h3>
+      <span className='field'>Email: </span> <span>{email}</span>
+      <br></br>
+      <span className='field'>Phone Number: </span> <span>{phone}</span>
+      <section className='sicko'>
+      <h3 className='profile-header-e'>Emergency Contact</h3> <a href='/contacts'>Edit</a>
+      </section>
+      <span className='field'>Emergency Contact Name: </span> <span>{contact_name}</span>
+      <br></br>
+      <span className='field'>Emergency Contact Number: </span> <span>{contact_phone}</span>
+      <br></br>
 
 
-//         <div>
-//         <Navbarr />
-//         <div className="profile-box">
-// <h1>Profile</h1>
-// <br/>
-// <h3>{name}</h3>
-// <h3>{email}</h3>
-// <h3>{phone}</h3>
-// <br/>
-// <h2>Emergency Contact</h2>
-// <h3>{contact_name}</h3>
-// <h3>{contact_phone}</h3>
-// <Link to={'/contacts'} className="nav-link"><button>Edit</button></Link>
-// <br/>
-// <br/>
-// <button onClick={this.onLogout}>Logout</button>
-//         </div>
-//         </div>
+
+      </section>
+      </div>
     );
   }
 }

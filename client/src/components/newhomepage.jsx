@@ -16,7 +16,7 @@ class Homepage extends Component {
       start_date: 69,
       end_date: 10,
       events: this.props.events,
-      carousel_events: this.props.events
+
     }
   }
 
@@ -92,7 +92,7 @@ class Homepage extends Component {
     return (
       <div>
       <Navbarr />
-      <CarouselPage events={this.state.carousel_events}/>
+      <CarouselPage events={this.props.events}/>
 
       <div className="container" style={{textAlign: 'center'}}>
        <h5 id = "search-title">Filter Results</h5>
