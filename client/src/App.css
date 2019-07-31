@@ -57,7 +57,7 @@ padding-top: 0px;
 }
 
 #eventbuttons{
-  background-color: #87CEFA;
+  background-color: #232f3e;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -69,10 +69,10 @@ padding-top: 0px;
 
 .buttonevent{
 
+  float: right;
   padding: 5px 10px;
   border: 1px solid black;
-  margin: 7px 5px;
-
+  margin: 7px 15px;
   border-radius: 2px;
 }
 .buttonevent:hover{
@@ -80,7 +80,7 @@ padding-top: 0px;
 
   padding: 5px 10px;
   border: 1px solid black;
-  margin: 7px 5px;
+  margin: 7px 15px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
@@ -135,7 +135,8 @@ padding-top: 0px;
   height: 100%;
   width: 40%;
   border-radius: 0px 5px 0px 0px;
-  background-color: #f76c6c;
+  background-color: #37475A;
+  text-align: center
 }
 #detailphoto{
   width: 60%;
@@ -376,6 +377,11 @@ body{
 #myeventscomp{
   border-style: groove;
     text-align: center;
+    padding-top: 15px;
+    padding-bottom: 13px;
+    margin-bottom: 20px;
+    width: 80%;
+
 }
 
 #myeventscomp:hover{
@@ -389,17 +395,17 @@ body{
 #attendevntbtn{
 
   padding: 5px 10px;
-  border: 1px solid black;
+
   margin: 7px 5px;
+
 
   border-radius: 2px;
 }
 #attendevntbtn:hover{
 
-  background-color: #374785;
-  color: grey;
+
   padding: 5px 10px;
-  border: 1px solid black;
+
   margin: 7px 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
@@ -465,5 +471,23 @@ body{
 .sicko{
   margin-top: 50px
 }
+
+.assistance-text{
+  width: 350px;
+  height: 80px;
+  margin-left: 55px;
+}
+
+.assistance-click{
+  float:right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.connecttoevent{
+  text-align: center;
+}
+
+
 
 

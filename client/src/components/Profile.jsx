@@ -34,7 +34,7 @@ class Login extends Component {
       <div>
       <Navbarr />
       <section className="profile-card">
-      <img className="pfp" src="https://blogtimenow.com/wp-content/uploads/2014/06/hide-facebook-profile-picture-notification.jpg" width="80px" height="80px"/>
+      <img className="pfp" src="../frank.jpg" width="80px" height="80px"/>
       <h2 className='profile-name'>{name}</h2>
       <h3 className='profile-header'>Basic Info</h3>
       <span className='field'>Email: </span> <span>{email}</span>

@@ -41,7 +41,7 @@ class App extends Component {
 
             <Route path='/login' component={Login} />
             <Route path='/map' render={() => <Map events={this.state.events} />} />
-            <Route path='/discover' render={() => <Discover events={this.state.events} />} />
+            <Route path='/old' render={() => <Discover events={this.state.events} />} />
             <Route path='/search' render={() => <Search events={this.state.events} />} />
             <Route path='/tickets' component={Tickets} />
             <Route path='/aid' component={Aid} />
@@ -52,7 +52,7 @@ class App extends Component {
             <Route path='/test' render={() => < Test events={this.state.events} />} />
             <Route path='/myevents' component={MyEvents} />
             <Route path='/contacts' component={EmergencyContacts} />
-            <Route path='/new' render={() => <Homepage events={this.state.events} />} />
+            <Route path='/discover' render={() => <Homepage events={this.state.events} />} />
 
           </Switch>
         </div>

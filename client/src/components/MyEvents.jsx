@@ -38,7 +38,11 @@ class MyEvents extends Component {
       <div>
         <Navbarr />
         <h2 style={{padding: "20px"}}>Attending Events</h2>
-        {attendingEvents}
+        <div className="container" id="rowbyrow">
+        <div className="row">
+          {attendingEvents}
+        </div>
+        </div>
 
       </div>
     );

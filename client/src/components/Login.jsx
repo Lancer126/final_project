@@ -49,7 +49,7 @@ class Login extends Component {
             window.sessionStorage.setItem("user_phone", user.phone);
             window.sessionStorage.setItem("contact_name", user.contact_name);
             window.sessionStorage.setItem("contact_phone", user.contact_phone);
-            window.location.replace('/new');
+            window.location.replace('/discover');
           })
           .catch(e => {
             console.log(e)
