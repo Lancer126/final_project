@@ -71,7 +71,7 @@ class AttendingEvent extends Component {
       <div class="container" id="myeventscomp">
         <h3>{this.props.event.name}</h3>
 
-        Happening on:{moment(this.props.event.start_time).format("MMM Do YYYY Do , h:mm")}
+        <span className='happening'>Happening on:</span>{moment(this.props.event.start_time).format("MMM Do YYYY Do , h:mm")}
         <br></br>
         <button id ="attendevntbtn" onClick={this.handleAssistance}>Contact Organizer</button>
         <button id ="attendevntbtn" onClick={this.handleReminder}>Set Check-in</button>
