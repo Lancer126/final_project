@@ -370,17 +370,29 @@ body{
   font-size: 20px;
 }
 
-
-   
-
 .edit {
   border: 2px solid orange !important;
   background-color: orange !important;
 }
+#rowbyrow{
+  display:flex;
+  justify-content:space-between;
+}
 
 #myeventscomp{
+  width: 420px;
+  height: 275px;
+  margin: 40px;
+  width: 20%;
   border-style: groove;
-    text-align: center;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px #e6e4e4;
+}
+
+.bottombuttons{
+  position:absolute;
+  bottom:1px;
+
 }
 
 #myeventscomp:hover{
@@ -389,7 +401,6 @@ body{
 }
 
 #attendevntbtn{
-
   background-color: #374785;
   color: white;
   padding: 5px 10px;
@@ -399,7 +410,6 @@ body{
   border-radius: 2px;
 }
 #attendevntbtn:hover{
-  
   background-color: #374785;
   color: grey;
   padding: 5px 10px;
@@ -407,6 +417,52 @@ body{
   margin: 7px 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.connecttoevent{
+  display: flex;
+  flex-direction: column;
+}
+#xbutton{
+  position: relative;
+  top:5;
+  left: 10px;
 }
    
             

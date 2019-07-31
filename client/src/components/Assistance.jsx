@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from './modalWindow.jsx'
 const axios = require('axios');
 
 class Assistance extends Component {
@@ -24,6 +25,7 @@ class Assistance extends Component {
       message: this.state.message
     })
     .then(function (response) {
+      
       console.log(response);
     })
     .catch(function (error) {
@@ -33,11 +35,27 @@ class Assistance extends Component {
 
   render() {
 
+    const modalStyle = {
+      overlay: {
+        backgroundColor: "rgba(0, 0, 0,0.5)"
+      }
+    };
 
     return(
       <div>
-        <input type="text" onChange={this.handleChange}/>
-        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+        <Modal
+        isModalOpen={true}
+        closeModal={() => {}}
+        style={modalStyle}>
+          <div>
+          <button id="xbutton" onClick={this.props.handleToggleAssistance}  type="button" className="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 className="connecttoevent">Connecting you to event organizer.</h4>
+          <input type="text" onChange={this.handleChange}/>
+          <input type="submit" value="Submit" onClick={this.handleSubmit && this.props.handleToggleAssistance}/>
+          </div>
+        </Modal>
       </div>
     );
   }

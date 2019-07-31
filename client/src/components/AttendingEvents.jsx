@@ -56,24 +56,36 @@ class AttendingEvent extends Component {
       reminderBox = <Reminder/> ;
     }
 
-    var requestBox = null;
-    if(this.state.assistance_status === true){
-      requestBox = <Assistance/> ;
+    const handleToggleAssistance = () =>{
+      this.setState({
+        assistance_status: false
+      })
     }
 
+    var requestBox = null;
+    if(this.state.assistance_status === true){
+      requestBox = <Assistance handleToggleAssistance={handleToggleAssistance}/> ;
+    }
+
+
+
     return(
-      <div class="container" id="myeventscomp">
+      
+        <div className="col" id="myeventscomp">
         <h3>{this.props.event.name}</h3>
 
         {moment(this.props.event.start_time).format("MMM Do YY")}
         <br></br>
+   <div className="bottombuttons">
         <button id ="attendevntbtn" onClick={this.handleAssistance}>Request Assistance</button>
         <button id ="attendevntbtn" onClick={this.handleReminder}>Set Reminder</button>
         <button id ="attendevntbtn" onClick={this.handleDelete}>Delete</button>
-
+        </div>
         {requestBox}
         {reminderBox}
-      </div>
+        </div>
+        
+     
 
     );
   }
