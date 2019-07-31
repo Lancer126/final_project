@@ -39,13 +39,13 @@
   color: white
 }
 #navbarr{
-  background-color: #87CEFA;
+  background-color: #232f3e;
 }
 #navbarr ul.navbar-nav li a.nav-link{
   color: white
 }
 #navbarr ul.navbar-nav li a.nav-link:hover{
-  color: black
+  color: #ccc
 }
 .carouselDiv{
   width:100%;
@@ -406,5 +406,9 @@ body{
    
 #searchbtns{
   display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 5px;
+  left: 15%;
 }          
        
