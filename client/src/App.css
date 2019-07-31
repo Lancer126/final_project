@@ -367,15 +367,29 @@ body{
 }
 
 
-
-
-
-
-
+.edit {
+  border: 2px solid orange !important;
+  background-color: orange !important;
+}
+#rowbyrow{
+  display:flex;
+  justify-content:space-between;
+}
 
 #myeventscomp{
+  width: 420px;
+  height: 275px;
+  margin: 40px;
+  width: 20%;
   border-style: groove;
-    text-align: center;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px #e6e4e4;
+}
+
+.bottombuttons{
+  position:absolute;
+  bottom:1px;
+
 }
 
 #myeventscomp:hover{
@@ -387,7 +401,8 @@ body{
 
 
 #attendevntbtn{
-
+  background-color: #374785;
+  color: white;
   padding: 5px 10px;
   border: 1px solid black;
   margin: 7px 5px;
@@ -395,7 +410,6 @@ body{
   border-radius: 2px;
 }
 #attendevntbtn:hover{
-
   background-color: #374785;
   color: grey;
   padding: 5px 10px;
@@ -404,66 +418,52 @@ body{
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
 }
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
 
-#searchbtns{
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.connecttoevent{
   display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 5px;
-  left: 15%;
+  flex-direction: column;
 }
-
-
-
-.profile-card{
-  margin-left: 25%;
-  width: 50%;
-  background-color: #232f3e;
-  padding: 25px;
-  padding-bottom: 80px;
-  margin-top: 50px;
-  margin-bottom: 25px;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0px 10px 14px 1px #949494;
+#xbutton{
+  position: relative;
+  top:5;
+  left: 10px;
 }
-
-.pfp{
-  display: block;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 40px;
-}
-
-.field{
-  font-weight: bold;
-  color: white;
-  margin-left: 25px;
-  padding: 2px;
-}
-
-.profile-header{
-
-  margin-left: 15px;
-  margin-top: 20px;
-  font-size: 16pt;
-}
-
-.profile-header-e{
-  display: inline;
-  margin-left: 15px;
-  font-size: 16pt;
-}
-
-.profile-name{
-  font-weight: bold;
-  text-align: center;
-}
-
-.sicko{
-  margin-top: 50px
-}
-
-
+   
+            
+       
